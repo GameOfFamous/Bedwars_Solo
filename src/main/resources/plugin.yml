@@ -1,0 +1,4 @@
+name: Bedwars_Solo
+version: '1.0-SNAPSHOT'
+main: fr.GameOfFamous.bedwars_Solo.Bedwars_Solo
+api-version: '1.20'
