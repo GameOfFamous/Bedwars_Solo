@@ -2,7 +2,7 @@ package fr.GameOfFamous.bedwars_Solo.events;
 
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
-import fr.GameOfFamous.bedwars_Solo.Utils.Menus.NPCMenu;
+import fr.GameOfFamous.bedwars_Solo.Utils.Menus.UpgradeMenu;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
@@ -43,7 +43,7 @@ public class onVillager implements Listener {
                     if(manager.playTeams.contains(Teams.GREEN)){
                         e.setCancelled(true);
                         p.closeInventory();
-                        NPCMenu.openUpgradeMenu(p, "Upgrade", Teams.GREEN);
+                        UpgradeMenu.openUpgradeMenu(p, "Upgrade", Teams.GREEN);
                     }
                 }
                 break;
@@ -52,7 +52,7 @@ public class onVillager implements Listener {
                     if(manager.playTeams.contains(Teams.RED)){
                         e.setCancelled(true);
                         p.closeInventory();
-                        NPCMenu.openUpgradeMenu(p, "Upgrade", Teams.RED);
+                        UpgradeMenu.openUpgradeMenu(p, "Upgrade", Teams.RED);
                     }
                 }
                 break;
@@ -61,7 +61,7 @@ public class onVillager implements Listener {
                     if(manager.playTeams.contains(Teams.YELLOW)){
                         e.setCancelled(true);
                         p.closeInventory();
-                        NPCMenu.openUpgradeMenu(p, "Upgrade", Teams.YELLOW);
+                        UpgradeMenu.openUpgradeMenu(p, "Upgrade", Teams.YELLOW);
                     }
                 }
                 break;
@@ -70,7 +70,7 @@ public class onVillager implements Listener {
                     if(manager.playTeams.contains(Teams.BLUE)){
                         e.setCancelled(true);
                         p.closeInventory();
-                        NPCMenu.openUpgradeMenu(p, "Upgrade", Teams.BLUE);
+                        UpgradeMenu.openUpgradeMenu(p, "Upgrade", Teams.BLUE);
                     }
                 }
                 break;

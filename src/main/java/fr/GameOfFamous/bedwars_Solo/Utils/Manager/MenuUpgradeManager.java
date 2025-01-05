@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class MenuManager {
+public class MenuUpgradeManager {
 
     public static final ConcurrentHashMap<Teams, TeamAccount> teamAccounts = GameManager.getInstance().teamAccounts;
 
@@ -88,17 +88,40 @@ public class MenuManager {
     public static List<String> getProtectionList(Teams team){
         List<String> lore = new ArrayList<>();
         TeamAccount teams = teamAccounts.get(team);
+        Player player = teams.getPlayer();
         int protection = teams.getProtection();
 
-        lore.add("§bAjoute protection à vos armures");
+        String[] cost = {
+                "§b2 Diamants",
+                "§b4 Diamants",
+                "§b8 Diamants",
+                "§b16 Diamants"
+        };
+
+        lore.add("§7Votre équipe obtient protection de");
+        lore.add("§7facon permanante sur toute les");
+        lore.add("§7pièces d'armures !");
+        lore.add(" ");
 
         // Générer la liste des protections en fonction du niveau
         for (int i = 1; i <= 4; i++) {
             if (i <= protection) {
                 lore.add(String.format("§aProtection %d ✓", i)); // Protection acquise
             } else {
-                lore.add(String.format("§cProtection %d ✗", i)); // Protection non acquise
+                lore.add(String.format("§cProtection %d ✗ : %s", i, cost[i - 1])); // Protection non acquise
             }
+        }
+
+        // Vérification des ressources pour la prochaine amélioration
+        if (protection < 4) { // Protection max = 4
+            int requiredDiamonds = (int) Math.pow(2, protection + 1);
+            if (countDiamondInventory(player) < requiredDiamonds) {
+                lore.add(" ");
+                lore.add("§cVous ne possédez pas assez de Diamants !");
+            }
+        } else {
+            lore.add(" ");
+            lore.add("§7Protection maximale atteinte §f: §a✓");
         }
 
         return lore;
@@ -129,17 +152,37 @@ public class MenuManager {
     public static List<String> getHastLore(Teams team){
         List<String> lore = new ArrayList<>();
         TeamAccount teams = teamAccounts.get(team);
+        Player player = teams.getPlayer();
         int hast = teams.getHast();
 
-        lore.add("§bAjoute l'effet Hast");
+        String[] cost = {
+                "§b2 Diamants",
+                "§b4 Diamants"
+        };
 
-        // Générer la liste des protections en fonction du niveau
+        lore.add("§7Tout les joueurs de votre équipe");
+        lore.add("§7obtiennent Célérité de facon");
+        lore.add("§7permanente !");
+        lore.add(" ");
+
+        // Générer la liste des hast en fonction du niveau
         for (int i = 1; i <= 2; i++) {
             if (i <= hast) {
-                lore.add(String.format("§aHast %d ✓", i)); // Protection acquise
+                lore.add(String.format("§aHast %d ✓", i)); // hast acquise
             } else {
-                lore.add(String.format("§cHast %d ✗", i)); // Protection non acquise
+                lore.add(String.format("§cHast %d ✗ §f: %s", i, cost[i - 1])); // hast non acquise
             }
+        }
+        // Vérification des ressources pour la prochaine amélioration
+        if (hast < 2) {
+            int requiredDiamonds = (int) Math.pow(2, hast + 1);
+            if (countDiamondInventory(player) < requiredDiamonds) {
+                lore.add(" ");
+                lore.add("§cVous ne possédez pas assez de Diamants !");
+            }
+        } else {
+            lore.add(" ");
+            lore.add("§7Hast maximum atteint §f: §a✓");
         }
 
         return lore;
@@ -172,23 +215,44 @@ public class MenuManager {
     public static List<String> getForgeLore(Teams team){
         List<String> lore = new ArrayList<>();
         TeamAccount teams = teamAccounts.get(team);
+        Player player = teams.getPlayer();
         int forge = teams.getForge();
 
         String[] bonuses = {
+                "+50% Iron",
                 "+100% Iron",
-                "+200% Iron",
-                "+1 Diamond",
-                "+1 Emerald"
+                "+1 Emeraude",
+                "+200% Iron"
         };
-        lore.add("§bAméliorer son générateur à minerais");
+        String[] cost = {
+                "§b2 Diamants",
+                "§b4 Diamants",
+                "§b6 Diamants",
+                "§b8 Diamants"
+        };
+        lore.add("§7Améliorez la production et la");
+        lore.add("§7capacité des ressources sur votre");
+        lore.add("§7île !");
+        lore.add(" ");
 
         // Génération de la lore en fonction du niveau de forge
         for (int i = 0; i < bonuses.length; i++) {
             if (forge > i) {
-                lore.add(String.format("§aForge %d ✓ : %s", i + 1, bonuses[i])); // Niveau acquis
+                lore.add(String.format("§aForge %d ✓ §f: %s", i + 1, bonuses[i])); // Niveau acquis
             } else {
-                lore.add(String.format("§cForge %d ✗ : %s", i + 1, bonuses[i])); // Niveau non acquis
+                lore.add(String.format("§cForge %d ✗ §f: %s §f: %s", i + 1, bonuses[i], cost[i])); // Niveau non acquis
             }
+        }
+        // Vérification des ressources pour la prochaine amélioration
+        if (forge < 4) {
+            int requiredDiamonds = (forge + 1) * 2;
+            if (countDiamondInventory(player) < requiredDiamonds) {
+                lore.add(" ");
+                lore.add("§cVous ne possédez pas assez de Diamants !");
+            }
+        } else {
+            lore.add(" ");
+            lore.add("§7Forge maximum atteinte §f: §a✓");
         }
 
         return lore;
@@ -215,12 +279,23 @@ public class MenuManager {
     public static List<String> getHealPoolLore(Teams team){
         List<String> lore = new ArrayList<>();
         TeamAccount teams = teamAccounts.get(team);
-        lore.add("§bAjoute un effet de Heal dans votre base");
+        Player player = teams.getPlayer();
+        lore.add("§7Crée un champ de régénération");
+        lore.add("§7autour de votre base !");
+        lore.add(" ");
 
         if(teams.isHealPool()){
-            lore.add("§bPossédé §f: §a✓");
+            lore.add(" ");
+            lore.add("§7Possédé §f: §a✓");
         }else {
-            lore.add("§bPossédé §f: §c✗");
+            lore.add(" ");
+            lore.add("§7Coût : §b2 Diamants");
+            lore.add(" ");
+            if(countDiamondInventory(player) >= 2){
+                lore.add("§7Possédé §f: §c✗");
+            }else {
+                lore.add("§cVous ne possédez pas assez de Diamants !");
+            }
         }
 
         return lore;
@@ -247,12 +322,23 @@ public class MenuManager {
     public static List<String> getSpeedPoolLore(Teams team){
         List<String> lore = new ArrayList<>();
         TeamAccount teams = teamAccounts.get(team);
-        lore.add("§bAjoute un effet de speed dans votre base");
+        Player player = teams.getPlayer();
+        lore.add("§7Crée un champ de speed");
+        lore.add("§7autour de votre base !");
+        lore.add(" ");
 
         if(teams.isSpeedPool()){
-            lore.add("§bPossédé §f: §a✓");
+            lore.add(" ");
+            lore.add("§7Possédé §f: §a✓");
         }else {
-            lore.add("§bPossédé §f: §c✗");
+            lore.add(" ");
+            lore.add("§7Coût : §b2 Diamants");
+            lore.add(" ");
+            if(countDiamondInventory(player) >= 2){
+                lore.add("§7Possédé §f: §c✗");
+            }else {
+                lore.add("§cVous ne possédez pas assez de Diamants !");
+            }
         }
 
         return lore;
@@ -396,5 +482,27 @@ public class MenuManager {
         }
 
         return  count;
+    }
+
+    public static void removeItems(Player player, int amount){
+        int remaining = amount;
+
+        for(ItemStack item : player.getInventory().getContents()){
+            if(item != null && item.getType() == Material.DIAMOND){
+                int itemAmount = item.getAmount();
+                if(itemAmount <= remaining){
+                    remaining -= itemAmount;
+                    player.getInventory().removeItem(item);
+                }else {
+                    item.setAmount(itemAmount - remaining);
+                    remaining = 0;
+                }
+
+                if(remaining <= 0){
+                    break;
+                }
+            }
+        }
+        player.updateInventory();
     }
 }

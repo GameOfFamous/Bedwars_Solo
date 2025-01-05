@@ -1,10 +1,10 @@
 package fr.GameOfFamous.bedwars_Solo.Utils.Minerals;
 
-import fr.gameoffamous.bedwarssolo.BedwarsSolo;
-import fr.gameoffamous.bedwarssolo.Utils.Enums.GameState;
-import fr.gameoffamous.bedwarssolo.Utils.Enums.Teams;
-import fr.gameoffamous.bedwarssolo.Utils.Manager.GameManager;
-import fr.gameoffamous.commons.TeamAccount;
+import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
+import fr.GameOfFamous.bedwars_Solo.Utils.Enums.GameState;
+import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
+import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
+import fr.GameOfFamous.commons.TeamAccount;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -59,7 +59,7 @@ public abstract class TeamMineralManager {
                     cancel();
                 }
             }
-        }.runTaskTimer(BedwarsSolo.instance, 0, 20L);
+        }.runTaskTimer(Bedwars_Solo.instance, 0, 20L);
 
         // Dépôts des minerais
         scheduleMineralDrop(iron, () -> ironAmount, 60L);
@@ -83,7 +83,7 @@ public abstract class TeamMineralManager {
                     dropItem(itemStack, amount, spawnLocation);
                 }
             }
-        }.runTaskTimer(BedwarsSolo.instance, 0, delay);
+        }.runTaskTimer(Bedwars_Solo.instance, 0, delay);
     }
 
     private void dropItem(ItemStack itemStack, int amount, Location location) {
