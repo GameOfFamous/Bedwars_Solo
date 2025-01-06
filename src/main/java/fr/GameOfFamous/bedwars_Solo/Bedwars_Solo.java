@@ -29,11 +29,11 @@ public final class Bedwars_Solo extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new eventsManager(), this);
         getServer().getPluginManager().registerEvents(new onArmorRemove(), this);
         getServer().getPluginManager().registerEvents(new onBlock(), this);
-        getServer().getPluginManager().registerEvents(new onInventory(), this);
+        getServer().getPluginManager().registerEvents(new onUpgradeMenu(), this);
         getServer().getPluginManager().registerEvents(new onPlayerDamage(), this);
         getServer().getPluginManager().registerEvents(new onPlayerJoinEvent(), this);
         getServer().getPluginManager().registerEvents(new onPlayerQuitEvent(), this);
-        getServer().getPluginManager().registerEvents(new onVillager(), this);
+        getServer().getPluginManager().registerEvents(new onMenuOpen(), this);
 
         getCommand("hub").setExecutor(new CommandHub());
 

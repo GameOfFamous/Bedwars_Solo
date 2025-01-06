@@ -11,7 +11,12 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -161,6 +166,29 @@ public class CreateItem {
         }
 
         return item;
+    }
+
+    public static ItemStack newPotion(PotionType basePotionType, boolean isExtended, boolean isUpgraded, PotionEffectType effectType, int duration, int amplifier, String[] lore){
+
+        ItemStack potion = new ItemStack(Material.POTION);
+
+        PotionMeta potionMeta = (PotionMeta) potion.getItemMeta();
+
+        if(potionMeta != null){
+            potionMeta.setBasePotionData(new PotionData(basePotionType, isExtended, isUpgraded));
+
+            PotionEffect customEffect = new PotionEffect(effectType, duration, amplifier);
+            potionMeta.addCustomEffect(customEffect, true);
+
+            if (lore != null && lore.length > 0) {
+                potionMeta.setLore(Arrays.asList(lore));
+            }
+
+            potion.setItemMeta(potionMeta);
+        }
+
+        return  potion;
+
     }
 
 }

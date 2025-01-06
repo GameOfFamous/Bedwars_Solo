@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
-public class onVillager implements Listener {
+public class onMenuOpen implements Listener {
 
     public GameManager manager = GameManager.getInstance();
 
@@ -31,12 +31,40 @@ public class onVillager implements Listener {
 
         switch (villagerName){
             case "§cKevin":
+                if(team.equals(Teams.RED)){
+                    if(manager.playTeams.contains(Teams.RED)){
+                        e.setCancelled(true);
+                        p.closeInventory();
+                        UpgradeMenu.openUpgradeMenu(p, "Market", Teams.RED);
+                    }
+                }
                 break;
             case "§aKevin":
+                if(team.equals(Teams.GREEN)){
+                    if(manager.playTeams.contains(Teams.GREEN)){
+                        e.setCancelled(true);
+                        p.closeInventory();
+                        UpgradeMenu.openUpgradeMenu(p, "Market", Teams.GREEN);
+                    }
+                }
                 break;
             case "§9Kevin":
+                if(team.equals(Teams.BLUE)){
+                    if(manager.playTeams.contains(Teams.BLUE)){
+                        e.setCancelled(true);
+                        p.closeInventory();
+                        UpgradeMenu.openUpgradeMenu(p, "Market", Teams.BLUE);
+                    }
+                }
                 break;
             case "§eKevin":
+                if(team.equals(Teams.YELLOW)){
+                    if(manager.playTeams.contains(Teams.YELLOW)){
+                        e.setCancelled(true);
+                        p.closeInventory();
+                        UpgradeMenu.openUpgradeMenu(p, "Market", Teams.YELLOW);
+                    }
+                }
                 break;
             case "§aDydou":
                 if(team.equals(Teams.GREEN)){

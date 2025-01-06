@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class onInventory implements Listener {
+public class onUpgradeMenu implements Listener {
 
     @EventHandler
     public void onInventory(InventoryClickEvent e){
