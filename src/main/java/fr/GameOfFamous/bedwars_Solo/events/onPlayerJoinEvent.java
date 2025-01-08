@@ -1,10 +1,10 @@
 package fr.GameOfFamous.bedwars_Solo.events;
 
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.GameState;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.MineraisLoc;
-import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.CreateItem;
 import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.SendMessage;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
+import fr.GameOfFamous.hellstylia_API.Utils.CreateItem;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

@@ -2,16 +2,16 @@ package fr.GameOfFamous.bedwars_Solo.Utils.states;
 
 import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.CustomNPC;
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.GameState;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.MineraisLoc;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
-import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.CreateItem;
-import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.SendMessage;
-import fr.GameOfFamous.bedwars_Solo.Utils.Manager.AccountManager;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
-import fr.GameOfFamous.bedwars_Solo.Utils.Manager.NPCManager;
 import fr.GameOfFamous.bedwars_Solo.events.onBlock;
 import fr.GameOfFamous.commons.TeamAccount;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
+import fr.GameOfFamous.hellstylia_API.Manager.BedwarsAccountManager;
+import fr.GameOfFamous.hellstylia_API.Utils.CreateItem;
+import fr.GameOfFamous.hellstylia_API.Utils.NPCcreator;
+import fr.GameOfFamous.hellstylia_API.Utils.SendMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -48,8 +48,8 @@ public class Finish {
                         manager.task = null;
                     }
                     Player winner = teamAccounts.get(team).getPlayer();
-                    AccountManager.addGameWin(winner.getUniqueId());
-                    AccountManager.addGamePlayed(winner.getUniqueId());
+                    BedwarsAccountManager.addGameWin(winner.getUniqueId());
+                    BedwarsAccountManager.addGamePlayed(winner.getUniqueId());
                     manager.setGameState(GameState.FINISHED);
                     for(Player player : Bukkit.getOnlinePlayers()){
                         SendMessage.sendTitle(player, team.getPrefix(), "§bsont les gagnants !");
@@ -66,7 +66,7 @@ public class Finish {
         GameManager manager = GameManager.getInstance();
         onBlock.resetMap();
         for(CustomNPC customNPC : manager.allPNJ){
-            NPCManager.removeNPC(Bukkit.getWorld("world"), customNPC.getName());
+            NPCcreator.removeNPC(Bukkit.getWorld("world"), customNPC.getName());
         }
         new BukkitRunnable(){
             int time = 60;

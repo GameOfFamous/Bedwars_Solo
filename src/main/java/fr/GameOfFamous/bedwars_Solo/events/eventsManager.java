@@ -1,6 +1,5 @@
 package fr.GameOfFamous.bedwars_Solo.events;
 
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.GameState;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.PlayerManager;
@@ -11,8 +10,6 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 public class eventsManager implements Listener {
-
-    public GameState state = GameManager.getInstance().gameState;
 
     @EventHandler
     public void onFoodLevel(FoodLevelChangeEvent e){

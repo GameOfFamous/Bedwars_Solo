@@ -1,11 +1,12 @@
 package fr.GameOfFamous.bedwars_Solo.Utils.Manager;
 
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.CustomNPC;
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.GameState;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Minerals.*;
 import fr.GameOfFamous.commons.MarketAccount;
 import fr.GameOfFamous.commons.TeamAccount;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
+import fr.GameOfFamous.hellstylia_API.Utils.NPCcreator;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -188,7 +189,7 @@ public class GameManager {
         for(Teams team : playTeams){
             for(CustomNPC customNPC : allPNJ){
                 if(customNPC.getTeam() == team){
-                    NPCManager.createNPC(customNPC.getLocation(), customNPC.getName());
+                    NPCcreator.createNPC(customNPC.getLocation(), customNPC.getName());
                 }
             }
         }

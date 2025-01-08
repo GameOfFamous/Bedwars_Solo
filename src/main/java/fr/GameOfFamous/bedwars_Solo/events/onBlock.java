@@ -1,11 +1,11 @@
 package fr.GameOfFamous.bedwars_Solo.events;
 
 import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.GameState;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
-import fr.GameOfFamous.bedwars_Solo.Utils.Manager.AccountManager;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
 import fr.GameOfFamous.commons.TeamAccount;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
+import fr.GameOfFamous.hellstylia_API.Manager.BedwarsAccountManager;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -48,7 +48,7 @@ public class onBlock implements Listener {
         playerPlacedBlocks.add(blockLocation);
 
         // Ajoutez le placement du bloc au gestionnaire de compte
-        AccountManager.addBlockPlace(player.getUniqueId());
+        BedwarsAccountManager.addBlockPlace(player.getUniqueId());
     }
 
     @EventHandler
@@ -105,7 +105,7 @@ public class onBlock implements Listener {
         }
 
         manager.supprBedInWorld(team);
-        AccountManager.addBedDestroy(p.getUniqueId());
+        BedwarsAccountManager.addBedDestroy(p.getUniqueId());
         TeamAccount teamAccount = manager.teamAccounts.get(team);
         if (teamAccount == null) {
             return;

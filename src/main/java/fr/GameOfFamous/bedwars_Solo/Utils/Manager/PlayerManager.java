@@ -1,11 +1,12 @@
 package fr.GameOfFamous.bedwars_Solo.Utils.Manager;
 
 import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.GameState;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.MineraisLoc;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
-import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.SendMessage;
 import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.SetPlayerStuff;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
+import fr.GameOfFamous.hellstylia_API.Manager.BedwarsAccountManager;
+import fr.GameOfFamous.hellstylia_API.Utils.SendMessage;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -59,7 +60,7 @@ public class PlayerManager {
         p.setFoodLevel(20);
 
         GameManager.getInstance().playTeams.remove(team);
-        AccountManager.addGamePlayed(p.getUniqueId());
+        BedwarsAccountManager.addGamePlayed(p.getUniqueId());
 
         SendMessage.sendTitle(p, "§cLit détruit", "§aVous êtes maintenant spectateur");
     }

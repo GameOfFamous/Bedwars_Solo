@@ -1,9 +1,9 @@
 package fr.GameOfFamous.bedwars_Solo.Utils.Minerals;
 
-import fr.gameoffamous.bedwarssolo.BedwarsSolo;
-import fr.gameoffamous.bedwarssolo.Utils.Enums.GameState;
-import fr.gameoffamous.bedwarssolo.Utils.Enums.MineraisLoc;
-import fr.gameoffamous.bedwarssolo.Utils.Manager.GameManager;
+import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
+import fr.GameOfFamous.bedwars_Solo.Utils.Enums.MineraisLoc;
+import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -57,7 +57,7 @@ public class DiamondEmerald {
                 }
                 diamondUpgradeTimer--;
             }
-        }.runTaskTimer(BedwarsSolo.instance, 0, DIAMOND_UPGRADE_DELAY);
+        }.runTaskTimer(Bedwars_Solo.instance, 0, DIAMOND_UPGRADE_DELAY);
 
         // Dépôt des diamants et des émeraudes
         new BukkitRunnable() {
@@ -76,7 +76,7 @@ public class DiamondEmerald {
                 dropItem(emerald, emeraldAmount, MineraisLoc.EMERALD1.getLocation());
                 dropItem(emerald, emeraldAmount, MineraisLoc.EMERALD2.getLocation());
             }
-        }.runTaskTimer(BedwarsSolo.instance, 0, DIAMOND_EMERALD_DROP_DELAY);
+        }.runTaskTimer(Bedwars_Solo.instance, 0, DIAMOND_EMERALD_DROP_DELAY);
     }
 
     private void dropItem(ItemStack itemStack, int amount, Location location) {

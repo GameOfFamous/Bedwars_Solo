@@ -1,11 +1,11 @@
 package fr.GameOfFamous.bedwars_Solo.events;
 
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.GameState;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.InventoryUtils;
-import fr.GameOfFamous.bedwars_Solo.Utils.Manager.AccountManager;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.PlayerManager;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
+import fr.GameOfFamous.hellstylia_API.Manager.BedwarsAccountManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -42,8 +42,8 @@ public class onPlayerDamage implements Listener {
                 transferPlayerItems(p, damager);
 
                 // Mise à jour des statistiques de l'account
-                AccountManager.addKills(damager.getUniqueId());
-                AccountManager.addDeath(p.getUniqueId());
+                BedwarsAccountManager.addKills(damager.getUniqueId());
+                BedwarsAccountManager.addDeath(p.getUniqueId());
 
                 // Vérification si l'équipe du joueur a encore son lit
                 Teams team = manager.returnPlayerTeam(p);

@@ -1,8 +1,8 @@
 package fr.GameOfFamous.bedwars_Solo.Utils.states;
 
 import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.GameState;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class Standing {

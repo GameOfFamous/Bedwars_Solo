@@ -1,7 +1,7 @@
 package fr.GameOfFamous.bedwars_Solo.Utils.Minerals;
 
-import fr.gameoffamous.bedwarssolo.Utils.Enums.MineraisLoc;
-import fr.gameoffamous.bedwarssolo.Utils.Enums.Teams;
+import fr.GameOfFamous.bedwars_Solo.Utils.Enums.MineraisLoc;
+import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 
 public class Red extends TeamMineralManager{
 

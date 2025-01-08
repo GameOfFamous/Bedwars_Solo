@@ -1,10 +1,10 @@
 package fr.GameOfFamous.bedwars_Solo.Utils.Minerals;
 
 import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.GameState;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
 import fr.GameOfFamous.commons.TeamAccount;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;

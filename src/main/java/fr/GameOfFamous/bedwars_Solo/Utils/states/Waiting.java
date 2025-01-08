@@ -1,9 +1,9 @@
 package fr.GameOfFamous.bedwars_Solo.Utils.states;
 
 import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.GameState;
-import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.SendMessage;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
+import fr.GameOfFamous.hellstylia_API.Utils.SendMessage;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -32,7 +32,7 @@ public class Waiting {
                     return;
                 }
 
-                if (manager.players.size() > 0) {
+                if (!manager.players.isEmpty()) {
                     for (Player player : manager.players) {
                         // Normalisez countdown pour qu'il soit compris entre 0.0 et 1.0
                         float progress = (float) countdown / 60;
