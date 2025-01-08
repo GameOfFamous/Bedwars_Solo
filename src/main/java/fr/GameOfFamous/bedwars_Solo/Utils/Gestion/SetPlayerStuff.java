@@ -48,9 +48,18 @@ public class SetPlayerStuff {
     public static void setPlayerSword(Player player){
         Teams team = GameManager.getInstance().returnPlayerTeam(player);
         TeamAccount account = GameManager.getInstance().teamAccounts.get(team);
+        MarketAccount marketAccount = GameManager.getInstance().marketAccounts.get(player);
         boolean sharpness = account.isSharpness();
 
         ItemStack sword = CreateItem.newItemBedwars(Material.WOODEN_SWORD, 1, sharpness);
+
+        if(marketAccount.getSword() == 1){
+            sword = CreateItem.newItemBedwars(Material.STONE_SWORD, 1, sharpness);
+        } else if (marketAccount.getSword() == 2) {
+            sword = CreateItem.newItemBedwars(Material.IRON_SWORD, 1, sharpness);
+        }else if (marketAccount.getSword() == 3) {
+            sword = CreateItem.newItemBedwars(Material.DIAMOND_SWORD, 1, sharpness);
+        }
 
         player.getInventory().setItem(0, sword);
     }
