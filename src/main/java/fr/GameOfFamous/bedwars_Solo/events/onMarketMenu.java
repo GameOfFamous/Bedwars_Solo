@@ -1,9 +1,12 @@
 package fr.GameOfFamous.bedwars_Solo.events;
 
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
+import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.InventoryUtils;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
 import fr.GameOfFamous.bedwars_Solo.Utils.Menus.MarketMenu;
 import fr.GameOfFamous.commons.MarketAccount;
+import fr.GameOfFamous.hellstylia_API.Utils.CreateItem;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -54,8 +57,48 @@ public class onMarketMenu implements Listener {
                 case "§bObjets":
                     MarketMenu.openMarketMenuObjet(p, "Market", team);
                     break;
+                case "§cLaine":
+                    if (countInventory(p, Material.IRON_INGOT) >= 4){
+                        removeItems(p, 4, Material.IRON_INGOT);
+
+                    }
+                    break;
             }
         }
+    }
+
+    public static void removeItems(Player player, int amount, Material material){
+        int remaining = amount;
+
+        for(ItemStack item : player.getInventory().getContents()){
+            if(item != null && item.getType() == material){
+                int itemAmount = item.getAmount();
+                if(itemAmount <= remaining){
+                    remaining -= itemAmount;
+                    player.getInventory().removeItem(item);
+                }else {
+                    item.setAmount(itemAmount - remaining);
+                    remaining = 0;
+                }
+
+                if(remaining <= 0){
+                    break;
+                }
+            }
+        }
+        player.updateInventory();
+    }
+
+    public static int countInventory(Player player, Material material){
+        int count = 0;
+
+        for(ItemStack item : player.getInventory()){
+            if(item != null && item.getType() == material){
+                count += item.getAmount();
+            }
+        }
+
+        return  count;
     }
 
 }

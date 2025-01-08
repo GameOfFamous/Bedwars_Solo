@@ -483,26 +483,4 @@ public class MenuUpgradeManager {
 
         return  count;
     }
-
-    public static void removeItems(Player player, int amount){
-        int remaining = amount;
-
-        for(ItemStack item : player.getInventory().getContents()){
-            if(item != null && item.getType() == Material.DIAMOND){
-                int itemAmount = item.getAmount();
-                if(itemAmount <= remaining){
-                    remaining -= itemAmount;
-                    player.getInventory().removeItem(item);
-                }else {
-                    item.setAmount(itemAmount - remaining);
-                    remaining = 0;
-                }
-
-                if(remaining <= 0){
-                    break;
-                }
-            }
-        }
-        player.updateInventory();
-    }
 }

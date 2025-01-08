@@ -45,6 +45,7 @@ public class GameManager {
 
 
     public BukkitTask task;
+    public BukkitTask task2;
 
 
     public final TeamAccount DEFAULT_ACCOUNT = new TeamAccount(null,false, true, false, 0, 0, 0, false, false, false, false,false, false);

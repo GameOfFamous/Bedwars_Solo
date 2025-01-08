@@ -4,7 +4,7 @@ import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.SetPlayerStuff;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
-import fr.GameOfFamous.bedwars_Solo.Utils.Player.Board;
+import fr.GameOfFamous.bedwars_Solo.Utils.Player.InGameBoard;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -21,7 +21,7 @@ public class Starting {
 
         Collections.shuffle(teams);
 
-        manager.task = Bukkit.getServer().getScheduler().runTaskTimer(Bedwars_Solo.instance, Board.getInstance(), 0, 1);
+        manager.task = Bukkit.getServer().getScheduler().runTaskTimer(Bedwars_Solo.instance, InGameBoard.getInstance(), 0, 1);
 
         manager.setGameState(fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState.IN_GAME);
 

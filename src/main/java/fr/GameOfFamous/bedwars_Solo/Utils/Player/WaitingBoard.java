@@ -1,7 +1,8 @@
 package fr.GameOfFamous.bedwars_Solo.Utils.Player;
 
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
+import fr.GameOfFamous.bedwars_Solo.Utils.states.Waiting;
+import fr.GameOfFamous.hellstylia_API.Manager.BedwarsAccountManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -10,13 +11,15 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-public class Board implements Runnable{
+import java.util.UUID;
 
-    private final static Board instance = new Board();
+public class WaitingBoard implements Runnable{
+
+    private final static WaitingBoard instance = new WaitingBoard();
 
     public GameManager manager = GameManager.getInstance();
 
-    private Board(){
+    private WaitingBoard(){
 
     }
 
@@ -35,6 +38,8 @@ public class Board implements Runnable{
 
     private void createNewScoreboard(Player player){
 
+        UUID uuid = player.getUniqueId();
+
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective objective = scoreboard.registerNewObjective("Hellstylia", "dummy");
 
@@ -50,39 +55,39 @@ public class Board implements Runnable{
         Team rankTeam = scoreboard.registerNewTeam("rankTeam");
         String rankKey = ChatColor.AQUA.toString();
         rankTeam.addEntry(rankKey);
-        rankTeam.setPrefix("§b " + "Vous ete : ");
-        rankTeam.setSuffix(manager.returnPlayerTeam(player).getPrefix());
+        rankTeam.setPrefix("§b " + "§bDébut dans §f: ");
+        rankTeam.setSuffix("§d0");
         objective.getScore(rankKey).setScore(7);
 
         // --- Argent ---
         Team REDTeam = scoreboard.registerNewTeam("REDTeam");
         String REDKey = ChatColor.RED.toString();
         REDTeam.addEntry(REDKey);
-        REDTeam.setPrefix("§c " + manager.returnSymboleBed(Teams.RED));
-        REDTeam.setSuffix("§cRed");
+        REDTeam.setPrefix("§c " + "§aGame jouer §f: ");
+        REDTeam.setSuffix("§d"+ BedwarsAccountManager.getGamePlayed(uuid));
         objective.getScore(REDKey).setScore(5);
 
         // --- Clan ---
         Team BlueTeam = scoreboard.registerNewTeam("BLUETeam");
         String BlueKey = ChatColor.BLUE.toString();
         BlueTeam.addEntry(BlueKey);
-        BlueTeam.setPrefix("§9 " + manager.returnSymboleBed(Teams.BLUE));
-        BlueTeam.setSuffix("§9Blue");
+        BlueTeam.setPrefix("§9 " + "§aGame Gagner §f: ");
+        BlueTeam.setSuffix("§d"+ BedwarsAccountManager.getGameWin(uuid));
         objective.getScore(BlueKey).setScore(4);
 
         // --- Grade ---
         Team YellowTeam = scoreboard.registerNewTeam("YELLOWTeam");
         String YellowKey = ChatColor.YELLOW.toString();
         YellowTeam.addEntry(YellowKey);
-        YellowTeam.setPrefix("§e " + manager.returnSymboleBed(Teams.YELLOW));
-        YellowTeam.setSuffix("§eYellow");
+        YellowTeam.setPrefix("§e " + "§aKills §f: ");
+        YellowTeam.setSuffix("§d"+ BedwarsAccountManager.getKills(uuid));
         objective.getScore(YellowKey).setScore(3);
 
         Team GreenTeam = scoreboard.registerNewTeam("GREENTeam");
         String GreedKey = ChatColor.GREEN.toString();
         GreenTeam.addEntry(GreedKey);
-        GreenTeam.setPrefix("§a " + manager.returnSymboleBed(Teams.GREEN));
-        GreenTeam.setSuffix("§aGreen");
+        GreenTeam.setPrefix("§a " + "§aDeath §f: ");
+        GreenTeam.setSuffix("§d"+ BedwarsAccountManager.getDeath(uuid));
         objective.getScore(GreedKey).setScore(2);
 
         // Appliquer le scoreboard au joueur
@@ -97,36 +102,12 @@ public class Board implements Runnable{
         // Mise à jour du rang
         Team team1 = scoreboard.getTeam("rankTeam");
         if (team1 != null) {
-            team1.setSuffix(manager.returnPlayerTeam(player).getPrefix());
-        }
-
-        // Mise à jour de l'argent
-        Team team2 = scoreboard.getTeam("REDTeam");
-        if (team2 != null) {
-            team2.setPrefix("§c " + manager.returnSymboleBed(Teams.RED));
-        }
-
-        // Mise à jour du clan
-        Team team3 = scoreboard.getTeam("BLUETeam");
-        if (team3 != null) {
-            team3.setPrefix("§9 " + manager.returnSymboleBed(Teams.BLUE));
-        }
-
-        // Mise à jour du grade
-        Team team4 = scoreboard.getTeam("YELLOWTeam");
-        if (team4 != null) {
-            team4.setPrefix("§e " + manager.returnSymboleBed(Teams.YELLOW));
-        }
-
-        // Mise à jour du grade
-        Team team5 = scoreboard.getTeam("GREENTeam");
-        if (team5 != null) {
-            team5.setPrefix("§a " + manager.returnSymboleBed(Teams.GREEN));
+            team1.setSuffix("§d" +Waiting.countdown);
         }
 
     }
 
-    public static Board getInstance(){
+    public static WaitingBoard getInstance(){
         return instance;
     }
 

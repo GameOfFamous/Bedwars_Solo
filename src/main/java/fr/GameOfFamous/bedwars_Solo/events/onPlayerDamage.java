@@ -62,9 +62,6 @@ public class onPlayerDamage implements Listener {
     private void transferPlayerItems(Player from, Player to) {
         // Transfert des objets spécifiques de `from` à `to`
         InventoryUtils.transferItems(from, to, item -> item.getType() == Material.IRON_INGOT);
-        InventoryUtils.transferItems(from, to, item -> item.getType() == Material.GOLD_INGOT);
-        InventoryUtils.transferItems(from, to, item -> item.getType() == Material.DIAMOND);
-        InventoryUtils.transferItems(from, to, item -> item.getType() == Material.EMERALD);
     }
 
 }

@@ -2,8 +2,11 @@ package fr.GameOfFamous.bedwars_Solo.Utils.states;
 
 import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
+import fr.GameOfFamous.bedwars_Solo.Utils.Player.InGameBoard;
+import fr.GameOfFamous.bedwars_Solo.Utils.Player.WaitingBoard;
 import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
 import fr.GameOfFamous.hellstylia_API.Utils.SendMessage;
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -20,7 +23,7 @@ public class Waiting {
 
         GameManager.getInstance().clearWorldEntities();
 
-        System.out.println("ok");
+        manager.task2 = Bukkit.getServer().getScheduler().runTaskTimer(Bedwars_Solo.instance, WaitingBoard.getInstance(), 0, 1);
 
         new BukkitRunnable() {
 
