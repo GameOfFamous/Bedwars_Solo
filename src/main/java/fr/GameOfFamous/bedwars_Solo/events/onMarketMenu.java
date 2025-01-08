@@ -8,6 +8,7 @@ import fr.GameOfFamous.commons.MarketAccount;
 import fr.GameOfFamous.commons.TeamAccount;
 import fr.GameOfFamous.hellstylia_API.Utils.CreateItem;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -83,11 +84,62 @@ public class onMarketMenu implements Listener {
                     processPurchase(p, Material.EMERALD, 4, CreateItem.newItemBedwars(Material.OBSIDIAN, 4, false), 4);
                     break;
                 case "§cEpée en Pierre":
-                    if(countInventory(p, Material.IRON_INGOT) >= 10){
-                        marketAccount.setSword(1);
-                        removeItems(p, 10, Material.IRON_INGOT);
-                        SetPlayerStuff.setPlayerSword(p);
+                    if(!(marketAccount.getSword() == 1)){
+                        if(countInventory(p, Material.IRON_INGOT) >= 10){
+                            marketAccount.setSword(1);
+                            removeItems(p, 10, Material.IRON_INGOT);
+                            SetPlayerStuff.setPlayerSword(p);
+                        }
                     }
+                    break;
+                case "§cEpée en fer":
+                    if (!(marketAccount.getSword() == 2)){
+                        if(countInventory(p, Material.GOLD_INGOT) >= 7){
+                            marketAccount.setSword(2);
+                            removeItems(p, 7, Material.GOLD_INGOT);
+                            SetPlayerStuff.setPlayerSword(p);
+                        }
+                    }
+                    break;
+                case "§cEpée en Diamant":
+                    if(!(marketAccount.getSword() == 3)){
+                        if(countInventory(p, Material.EMERALD) >= 4){
+                            marketAccount.setSword(3);
+                            removeItems(p, 4, Material.EMERALD);
+                            SetPlayerStuff.setPlayerSword(p);
+                        }
+                    }
+                    break;
+                case "§cEjector":
+                    processPurchase(p, Material.GOLD_INGOT, 5, CreateItem.newItemCustomBedwars(Material.STICK, "§cEjector", Enchantment.KNOCKBACK, 1), 1);
+                    break;
+                case "§cArmure en cotte de mailles":
+                    if(!(marketAccount.getArmor() == 1)){
+                        if(countInventory(p, Material.IRON_INGOT) >= 24){
+                            marketAccount.setArmor(1);
+                            removeItems(p, 24, Material.IRON_INGOT);
+                            SetPlayerStuff.setPlayerArmor(p);
+                        }
+                    }
+                    break;
+                case "§cArmure en fer":
+                    if(!(marketAccount.getArmor() == 2)){
+                        if(countInventory(p, Material.GOLD_INGOT) >= 12){
+                            marketAccount.setArmor(2);
+                            removeItems(p, 12, Material.GOLD_INGOT);
+                            SetPlayerStuff.setPlayerArmor(p);
+                        }
+                    }
+                    break;
+                case "§cArmure en diamant":
+                    if(!(marketAccount.getArmor() == 3)){
+                        if(countInventory(p, Material.EMERALD) >= 6){
+                            marketAccount.setArmor(3);
+                            removeItems(p, 6, Material.EMERALD);
+                            SetPlayerStuff.setPlayerArmor(p);
+                        }
+                    }
+                    break;
             }
         }
     }
