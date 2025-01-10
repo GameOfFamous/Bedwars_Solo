@@ -86,7 +86,7 @@ public class PlayerManager {
         player.setHealth(20);
         player.setFoodLevel(20);
 
-        GameManager.getInstance().playTeams.remove(teams);
+        manager.playTeams.remove(teams);
         BedwarsAccountManager.addGamePlayed(player.getUniqueId());
 
         SendMessage.sendTitle(player, "§cLit détruit", "§aVous êtes maintenant spectateur");

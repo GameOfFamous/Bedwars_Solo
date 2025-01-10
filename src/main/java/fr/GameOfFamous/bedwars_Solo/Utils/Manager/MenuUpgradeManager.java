@@ -27,11 +27,7 @@ public class MenuUpgradeManager {
     }
     public static boolean getSharpnessEnchant(Teams team){
         TeamAccount teams = teamAccounts.get(team);
-        if(teams.isSharpness()){
-            return true;
-        }
-
-        return false;
+        return teams.isSharpness();
     }
 
     public static List<String> getSharpnessLore(Teams team){
@@ -78,11 +74,7 @@ public class MenuUpgradeManager {
         TeamAccount teams = teamAccounts.get(team);
         int protection = teams.getProtection();
 
-        if(protection == 4){
-            return true;
-        }
-
-        return false;
+        return protection == 4;
     }
 
     public static List<String> getProtectionList(Teams team){
@@ -142,11 +134,7 @@ public class MenuUpgradeManager {
         TeamAccount teams = teamAccounts.get(team);
         int hast = teams.getHast();
 
-        if(hast == 2){
-            return true;
-        }
-
-        return false;
+        return hast == 2;
     }
 
     public static List<String> getHastLore(Teams team){
@@ -205,11 +193,7 @@ public class MenuUpgradeManager {
         TeamAccount teams = teamAccounts.get(team);
         int forge = teams.getForge();
 
-        if(forge == 4){
-            return true;
-        }
-
-        return false;
+        return forge == 4;
     }
 
     public static List<String> getForgeLore(Teams team){
@@ -269,11 +253,7 @@ public class MenuUpgradeManager {
 
     public static boolean getHealPoolEnchant(Teams team){
         TeamAccount teams = teamAccounts.get(team);
-        if(teams.isHealPool()){
-            return true;
-        }
-
-        return false;
+        return teams.isHealPool();
     }
 
     public static List<String> getHealPoolLore(Teams team){
@@ -312,11 +292,7 @@ public class MenuUpgradeManager {
 
     public static boolean getSpeedPoolEnchant(Teams team){
         TeamAccount teams = teamAccounts.get(team);
-        if(teams.isSpeedPool()){
-            return true;
-        }
-
-        return false;
+        return teams.isSpeedPool();
     }
 
     public static List<String> getSpeedPoolLore(Teams team){
@@ -355,11 +331,7 @@ public class MenuUpgradeManager {
 
     public static boolean getSlownessEnchant(Teams team){
         TeamAccount teams = teamAccounts.get(team);
-        if(teams.isTrapSlowness()){
-            return true;
-        }
-
-        return false;
+        return teams.isTrapSlowness();
     }
 
     public static List<String> getSlownessLore(Teams team){
@@ -387,11 +359,7 @@ public class MenuUpgradeManager {
 
     public static boolean getBlindnessEnchant(Teams team){
         TeamAccount teams = teamAccounts.get(team);
-        if(teams.isTrapBlindness()){
-            return true;
-        }
-
-        return false;
+        return teams.isTrapBlindness();
     }
 
     public static List<String> getBlindnessLore(Teams team){
@@ -419,11 +387,7 @@ public class MenuUpgradeManager {
 
     public static boolean getMiningEnchant(Teams team){
         TeamAccount teams = teamAccounts.get(team);
-        if(teams.isTrapMiningFatigue()){
-            return true;
-        }
-
-        return false;
+        return teams.isTrapMiningFatigue();
     }
 
     public static List<String> getMiningLore(Teams team){
@@ -451,11 +415,7 @@ public class MenuUpgradeManager {
 
     public static boolean getAlarmEnchant(Teams team){
         TeamAccount teams = teamAccounts.get(team);
-        if(teams.isAlarmTrap()){
-            return true;
-        }
-
-        return false;
+        return teams.isAlarmTrap();
     }
 
     public static List<String> getAlarmLore(Teams team){

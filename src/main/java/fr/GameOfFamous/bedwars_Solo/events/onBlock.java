@@ -27,12 +27,6 @@ public class onBlock implements Listener {
 
     @EventHandler
     public void onBlockPlaceEvent(BlockPlaceEvent e){
-        // Vérifiez que l'événement et ses données ne sont pas null
-        if (e == null || e.getPlayer() == null || e.getBlockPlaced() == null) {
-            System.out.println("BlockPlaceEvent : Événement ou données nulles.");
-            return;
-        }
-
         Player player = e.getPlayer();
         Location blockLocation = e.getBlockPlaced().getLocation();
 
@@ -43,6 +37,9 @@ public class onBlock implements Listener {
         }else {
             e.setCancelled(false);
         }
+
+        // Vérifiez que l'événement et ses données ne sont pas null
+        e.getBlockPlaced();
 
         // Ajoutez le bloc à la liste des blocs placés par les joueurs
         playerPlacedBlocks.add(blockLocation);
@@ -55,13 +52,10 @@ public class onBlock implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         Location blockLocation = event.getBlock().getLocation();
         Material block = event.getBlock().getType();
-        Player p = event.getPlayer();
 
-        if(manager.gameState != GameState.IN_GAME){
-            event.setCancelled(true);
-        }else {
-            event.setCancelled(false);
-        }
+        event.setCancelled(manager.gameState != GameState.IN_GAME);
+
+        Player p = event.getPlayer();
 
         if(Tag.BEDS.isTagged(block)){
             switch (block){
@@ -79,6 +73,8 @@ public class onBlock implements Listener {
                     break;
             }
         }
+
+
 
         // Vérifie si le bloc est dans la liste des blocs placés par les joueurs
         if (playerPlacedBlocks.contains(blockLocation)) {
