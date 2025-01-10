@@ -32,7 +32,7 @@ public class Finish {
         new BukkitRunnable(){
             @Override
             public void run() {
-                if(Bukkit.getOnlinePlayers().size() == 0){
+                if(Bukkit.getOnlinePlayers().isEmpty()){
                     cancel();
                 }
                 if(manager.gameState != GameState.IN_GAME){
@@ -43,14 +43,12 @@ public class Finish {
                 if(manager.playTeams.size() == 1){
                     cancel();
                     Teams team = manager.playTeams.get(0);
-                    if(manager.task != null){
-                        manager.task.cancel();
-                        manager.task = null;
-                    }
+                    manager.allTasks.get("Hellstylia").cancel();
                     Player winner = teamAccounts.get(team).getPlayer();
                     BedwarsAccountManager.addGameWin(winner.getUniqueId());
                     BedwarsAccountManager.addGamePlayed(winner.getUniqueId());
                     manager.setGameState(GameState.FINISHED);
+                    manager.removeScordboard("Hellstylia");
                     for(Player player : Bukkit.getOnlinePlayers()){
                         SendMessage.sendTitle(player, team.getPrefix(), "§bsont les gagnants !");
                         player.getInventory().clear();
@@ -73,7 +71,7 @@ public class Finish {
 
             @Override
             public void run() {
-                if(Bukkit.getOnlinePlayers().size() == 0){
+                if(Bukkit.getOnlinePlayers().isEmpty()){
                     cancel();
                 }
 

@@ -13,56 +13,83 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class PlayerManager {
 
-    public static void respawnPlayerWithBed(Player p){
-        Teams team = GameManager.getInstance().returnPlayerTeam(p);
+    public static void respawnPlayer(Player player){
 
-        GameState state = GameManager.getInstance().gameState;
+        Teams teams = GameManager.getInstance().returnPlayerTeam(player);
+        GameManager manager = GameManager.getInstance();
 
-        p.getInventory().clear();
-        p.setGameMode(GameMode.SPECTATOR);
-        p.teleport(MineraisLoc.LOBBY.getLocation());
+        if(manager.teamAccounts.get(teams).isBedAlive()){
+            resetPlayerStats(player, teams, manager);
+            return;
+        }
+
+        resetPlayer(player, teams, manager);
+
+    }
+
+    private static void resetPlayerStats(Player player, Teams teams, GameManager manager){
+        player.getInventory().clear();
+        player.setGameMode(GameMode.SPECTATOR);
+        player.teleport(MineraisLoc.LOBBY.getLocation());
+        manager.marketAccounts.get(player).setSword(0);
+
+        startRespawnTimer(player, teams, manager);
+    }
+
+    private static void startRespawnTimer(Player player, Teams teams, GameManager manager){
 
         new BukkitRunnable(){
             int timer = 5;
+
             @Override
             public void run() {
-
-                if(state != GameState.IN_GAME){
+                // Vérifier si le jeu est toujours en cours
+                if (manager.gameState != GameState.IN_GAME) {
                     cancel();
                     return;
                 }
 
-                if(timer <= 0){
-                    p.setGameMode(GameMode.SURVIVAL);
-                    SetPlayerStuff.setPlayerArmor(p);
-                    SetPlayerStuff.setPlayerSword(p);
-                    p.setHealth(20);
-                    p.setFoodLevel(20);
-                    p.teleport(team.getSpawnLoc());
-                    timer = 5;
+                // Fin du décompte, réinitialisation du joueur
+                if (timer <= 0) {
+                    respawnPlayer(player, teams);
                     cancel();
+                    return;
                 }
 
-                SendMessage.sendActionBar(p, "Respawn dans : " + timer + " secondes");
-
-                timer --;
+                // Envoyer le message de décompte
+                SendMessage.sendActionBar(player, "Respawn dans : §e" + timer + " §fsecondes");
+                timer--;
             }
         }.runTaskTimer(Bedwars_Solo.instance, 0, 20L);
+
     }
 
-    public static void respawnPlayerWithoutBed(Player p){
-        Teams team = GameManager.getInstance().returnPlayerTeam(p);
+    private static void respawnPlayer(Player player, Teams teams){
+        // Réinitialisation complète du joueur après respawn
+        player.setGameMode(GameMode.SURVIVAL);
+        player.setHealth(20.0);
+        player.setFoodLevel(20);
 
-        p.getInventory().clear();
-        p.setGameMode(GameMode.SPECTATOR);
+        // Donner l'équipement
+        SetPlayerStuff.setPlayerArmor(player);
+        SetPlayerStuff.setPlayerSword(player);
 
-        p.setHealth(20);
-        p.setFoodLevel(20);
+        // Téléporter le joueur au spawn de son équipe
+        player.teleport(teams.getSpawnLoc());
+    }
 
-        GameManager.getInstance().playTeams.remove(team);
-        BedwarsAccountManager.addGamePlayed(p.getUniqueId());
+    private static void resetPlayer(Player player, Teams teams, GameManager manager){
 
-        SendMessage.sendTitle(p, "§cLit détruit", "§aVous êtes maintenant spectateur");
+        player.getInventory().clear();
+        player.setGameMode(GameMode.SPECTATOR);
+
+        player.setHealth(20);
+        player.setFoodLevel(20);
+
+        GameManager.getInstance().playTeams.remove(teams);
+        BedwarsAccountManager.addGamePlayed(player.getUniqueId());
+
+        SendMessage.sendTitle(player, "§cLit détruit", "§aVous êtes maintenant spectateur");
     }
 
 }

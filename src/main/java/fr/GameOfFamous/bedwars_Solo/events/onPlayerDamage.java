@@ -1,6 +1,5 @@
 package fr.GameOfFamous.bedwars_Solo.events;
 
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.InventoryUtils;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.PlayerManager;
@@ -45,15 +44,8 @@ public class onPlayerDamage implements Listener {
                 BedwarsAccountManager.addKills(damager.getUniqueId());
                 BedwarsAccountManager.addDeath(p.getUniqueId());
 
-                // Vérification si l'équipe du joueur a encore son lit
-                Teams team = manager.returnPlayerTeam(p);
-                if (manager.teamAccounts.get(team).isBedAlive()) {
-                    // Respawn si le lit est intact
-                    PlayerManager.respawnPlayerWithBed(p);
-                } else {
-                    // Sinon, fin du joueur
-                    PlayerManager.respawnPlayerWithoutBed(p);
-                }
+                // Respawn le joueur
+                PlayerManager.respawnPlayer(p);
             }
         }
 

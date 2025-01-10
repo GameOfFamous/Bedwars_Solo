@@ -27,7 +27,7 @@ public class WaitingBoard implements Runnable{
     public void run(){
 
         for(Player player : Bukkit.getOnlinePlayers()){
-            if(player.getScoreboard() != null && player.getScoreboard().getObjective("Hellstylia") != null){
+            if(player.getScoreboard() != null && player.getScoreboard().getObjective("Waiting") != null){
                 updateScoreboard(player);
             }else{
                 createNewScoreboard(player);
@@ -41,7 +41,7 @@ public class WaitingBoard implements Runnable{
         UUID uuid = player.getUniqueId();
 
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-        Objective objective = scoreboard.registerNewObjective("Hellstylia", "dummy");
+        Objective objective = scoreboard.registerNewObjective("Waiting", "dummy");
 
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         objective.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Hellstylia");

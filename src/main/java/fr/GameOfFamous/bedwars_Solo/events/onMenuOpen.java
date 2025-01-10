@@ -2,6 +2,7 @@ package fr.GameOfFamous.bedwars_Solo.events;
 
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
+import fr.GameOfFamous.bedwars_Solo.Utils.Menus.MarketMenu;
 import fr.GameOfFamous.bedwars_Solo.Utils.Menus.UpgradeMenu;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
@@ -35,7 +36,7 @@ public class onMenuOpen implements Listener {
                     if(manager.playTeams.contains(Teams.RED)){
                         e.setCancelled(true);
                         p.closeInventory();
-                        UpgradeMenu.openUpgradeMenu(p, "Market", Teams.RED);
+                        MarketMenu.openMarketMenuRapid(p, "Market", Teams.RED);
                     }
                 }
                 break;
@@ -44,7 +45,7 @@ public class onMenuOpen implements Listener {
                     if(manager.playTeams.contains(Teams.GREEN)){
                         e.setCancelled(true);
                         p.closeInventory();
-                        UpgradeMenu.openUpgradeMenu(p, "Market", Teams.GREEN);
+                        MarketMenu.openMarketMenuRapid(p, "Market", Teams.GREEN);
                     }
                 }
                 break;
@@ -53,7 +54,7 @@ public class onMenuOpen implements Listener {
                     if(manager.playTeams.contains(Teams.BLUE)){
                         e.setCancelled(true);
                         p.closeInventory();
-                        UpgradeMenu.openUpgradeMenu(p, "Market", Teams.BLUE);
+                        MarketMenu.openMarketMenuRapid(p, "Market", Teams.BLUE);
                     }
                 }
                 break;
@@ -62,7 +63,7 @@ public class onMenuOpen implements Listener {
                     if(manager.playTeams.contains(Teams.YELLOW)){
                         e.setCancelled(true);
                         p.closeInventory();
-                        UpgradeMenu.openUpgradeMenu(p, "Market", Teams.YELLOW);
+                        MarketMenu.openMarketMenuRapid(p, "Market", Teams.YELLOW);
                     }
                 }
                 break;

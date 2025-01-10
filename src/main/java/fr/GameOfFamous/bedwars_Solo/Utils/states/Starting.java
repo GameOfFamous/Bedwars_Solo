@@ -21,7 +21,7 @@ public class Starting {
 
         Collections.shuffle(teams);
 
-        manager.task = Bukkit.getServer().getScheduler().runTaskTimer(Bedwars_Solo.instance, InGameBoard.getInstance(), 0, 1);
+        manager.allTasks.put("Hellstylia", Bukkit.getServer().getScheduler().runTaskTimer(Bedwars_Solo.instance, InGameBoard.getInstance(), 0, 1));
 
         manager.setGameState(fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState.IN_GAME);
 

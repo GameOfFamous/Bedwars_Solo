@@ -1,7 +1,5 @@
 package fr.GameOfFamous.bedwars_Solo.events;
 
-import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
-import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.PlayerManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,14 +19,7 @@ public class eventsManager implements Listener {
         Player p = e.getPlayer();
 
         if(p.getLocation().getY() <= 0){
-            Teams team = GameManager.getInstance().returnPlayerTeam(p);
-            if (GameManager.getInstance().teamAccounts.get(team).isBedAlive()) {
-                // Respawn si le lit est intact
-                PlayerManager.respawnPlayerWithBed(p);
-            } else {
-                // Sinon, fin du joueur
-                PlayerManager.respawnPlayerWithoutBed(p);
-            }
+            PlayerManager.respawnPlayer(p);
         }
 
     }

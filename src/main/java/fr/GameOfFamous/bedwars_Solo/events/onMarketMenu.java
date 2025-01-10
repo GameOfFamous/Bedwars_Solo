@@ -5,7 +5,6 @@ import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.SetPlayerStuff;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
 import fr.GameOfFamous.bedwars_Solo.Utils.Menus.MarketMenu;
 import fr.GameOfFamous.commons.MarketAccount;
-import fr.GameOfFamous.commons.TeamAccount;
 import fr.GameOfFamous.hellstylia_API.Utils.CreateItem;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -16,8 +15,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.concurrent.ConcurrentHashMap;
-
 public class onMarketMenu implements Listener {
 
     @EventHandler
@@ -26,7 +23,6 @@ public class onMarketMenu implements Listener {
         ItemStack current = e.getCurrentItem();
         ItemMeta item = current.getItemMeta();
         Teams team = GameManager.getInstance().returnPlayerTeam(p);
-        TeamAccount account = GameManager.getInstance().teamAccounts.get(team);
         MarketAccount marketAccount = GameManager.getInstance().marketAccounts.get(p);
 
         if(e.getView().getTitle().equalsIgnoreCase("Market")){

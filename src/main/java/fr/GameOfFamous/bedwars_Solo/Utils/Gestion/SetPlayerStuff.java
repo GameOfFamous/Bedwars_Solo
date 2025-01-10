@@ -21,22 +21,26 @@ public class SetPlayerStuff {
         int enchantLevel = account.getProtection();
 
         ItemStack helmet = CreateItem.createColoredArmor(Material.LEATHER_HELMET, color, enchantLevel);
-        ItemStack chesplate = CreateItem.createColoredArmor(Material.LEATHER_CHESTPLATE, color, enchantLevel);
-        ItemStack leggins = CreateItem.createColoredArmor(Material.LEATHER_LEGGINGS, color, enchantLevel);
-        ItemStack boots = CreateItem.createColoredArmor(Material.LEATHER_BOOTS, color, enchantLevel);
+        ItemStack chesplate = null;
+        ItemStack leggins = null;
+        ItemStack boots = null;
 
-        if (marketAccount.getArmor() == 1) {
-            chesplate = CreateItem.createColoredArmor(Material.CHAINMAIL_CHESTPLATE, color, enchantLevel);
-            leggins = CreateItem.createColoredArmor(Material.CHAINMAIL_LEGGINGS, color, enchantLevel);
-            boots = CreateItem.createColoredArmor(Material.CHAINMAIL_BOOTS, color, enchantLevel);
+        if(marketAccount.getArmor() == 0) {
+            chesplate = CreateItem.createColoredArmor(Material.LEATHER_CHESTPLATE, color, enchantLevel);
+            leggins = CreateItem.createColoredArmor(Material.LEATHER_LEGGINGS, color, enchantLevel);
+            boots = CreateItem.createColoredArmor(Material.LEATHER_BOOTS, color, enchantLevel);
+        }else if (marketAccount.getArmor() == 1) {
+            chesplate = CreateItem.createArmor(Material.CHAINMAIL_CHESTPLATE, enchantLevel);
+            leggins = CreateItem.createArmor(Material.CHAINMAIL_LEGGINGS, enchantLevel);
+            boots = CreateItem.createArmor(Material.CHAINMAIL_BOOTS, enchantLevel);
         } else if (marketAccount.getArmor() == 2) {
-            chesplate = CreateItem.createColoredArmor(Material.IRON_CHESTPLATE, color, enchantLevel);
-            leggins = CreateItem.createColoredArmor(Material.IRON_LEGGINGS, color, enchantLevel);
-            boots = CreateItem.createColoredArmor(Material.IRON_BOOTS, color, enchantLevel);
+            chesplate = CreateItem.createArmor(Material.IRON_CHESTPLATE, enchantLevel);
+            leggins = CreateItem.createArmor(Material.IRON_LEGGINGS, enchantLevel);
+            boots = CreateItem.createArmor(Material.IRON_BOOTS, enchantLevel);
         } else if (marketAccount.getArmor() == 3) {
-            chesplate = CreateItem.createColoredArmor(Material.DIAMOND_CHESTPLATE, color, enchantLevel);
-            leggins = CreateItem.createColoredArmor(Material.DIAMOND_LEGGINGS, color, enchantLevel);
-            boots = CreateItem.createColoredArmor(Material.DIAMOND_BOOTS, color, enchantLevel);
+            chesplate = CreateItem.createArmor(Material.DIAMOND_CHESTPLATE, enchantLevel);
+            leggins = CreateItem.createArmor(Material.DIAMOND_LEGGINGS, enchantLevel);
+            boots = CreateItem.createArmor(Material.DIAMOND_BOOTS, enchantLevel);
         }
 
         player.getInventory().setHelmet(helmet);

@@ -16,7 +16,13 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.type.Bed;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,9 +49,7 @@ public class GameManager {
     public final ConcurrentHashMap<Teams, TeamAccount> teamAccounts = new ConcurrentHashMap<>();
     public final ConcurrentHashMap<Player, MarketAccount> marketAccounts = new ConcurrentHashMap<>();
 
-
-    public BukkitTask task;
-    public BukkitTask task2;
+    public ConcurrentHashMap<String, BukkitTask> allTasks = new ConcurrentHashMap<>();
 
 
     public final TeamAccount DEFAULT_ACCOUNT = new TeamAccount(null,false, true, false, 0, 0, 0, false, false, false, false,false, false);
@@ -246,6 +250,27 @@ public class GameManager {
             }
         }
         return instance;
+    }
+
+    public void removeScordboard(String objectiveName){
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+
+        Objective objective = scoreboard.getObjective(objectiveName);
+        if(objective != null){
+            objective.unregister();
+        }
+    }
+
+    public void cancelAllTasks(Plugin plugin){
+        BukkitScheduler scheduler = Bukkit.getScheduler();
+
+        List<BukkitTask> tasks = scheduler.getPendingTasks();
+
+        for(BukkitTask task : tasks){
+            if(task.getOwner().equals(plugin)){
+                scheduler.cancelTask(task.getTaskId());
+            }
+        }
     }
 
 }

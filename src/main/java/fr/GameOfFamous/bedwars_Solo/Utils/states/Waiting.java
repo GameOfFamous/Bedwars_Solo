@@ -2,7 +2,6 @@ package fr.GameOfFamous.bedwars_Solo.Utils.states;
 
 import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
-import fr.GameOfFamous.bedwars_Solo.Utils.Player.InGameBoard;
 import fr.GameOfFamous.bedwars_Solo.Utils.Player.WaitingBoard;
 import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
 import fr.GameOfFamous.hellstylia_API.Utils.SendMessage;
@@ -23,7 +22,7 @@ public class Waiting {
 
         GameManager.getInstance().clearWorldEntities();
 
-        manager.task2 = Bukkit.getServer().getScheduler().runTaskTimer(Bedwars_Solo.instance, WaitingBoard.getInstance(), 0, 1);
+        manager.allTasks.put("waiting",Bukkit.getServer().getScheduler().runTaskTimer(Bedwars_Solo.instance, WaitingBoard.getInstance(), 0, 1));
 
         new BukkitRunnable() {
 
@@ -59,6 +58,8 @@ public class Waiting {
 
                 if (countdown <= 0) {
                     countdown = 60;
+                    manager.allTasks.get("wainting").cancel();
+                    manager.removeScordboard("Waiting");
                     Starting.setStarting();
                     cancel();
                 }
