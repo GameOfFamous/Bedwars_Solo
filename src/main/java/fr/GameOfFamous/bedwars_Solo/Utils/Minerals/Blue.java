@@ -19,18 +19,19 @@ public class Blue extends TeamMineralManager{
                 goldAmount = 1;
                 break;
             case 1:
+                ironAmount = 3;
+                goldAmount = 1;
+                break;
+            case 2:
                 ironAmount = 4;
                 goldAmount = 2;
                 break;
-            case 2:
-                ironAmount = 6;
-                goldAmount = 3;
-                break;
             case 3:
-                diamsAmount = 1;
+                emeraldAmount = 1;
                 break;
             case 4:
-                emeraldAmount = 1;
+                ironAmount = 6;
+                goldAmount = 3;
                 break;
         }
     }

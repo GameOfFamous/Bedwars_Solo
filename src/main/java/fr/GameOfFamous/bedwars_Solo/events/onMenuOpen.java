@@ -25,6 +25,8 @@ public class onMenuOpen implements Listener {
             return;
         }
 
+        e.setCancelled(true);
+
         String villagerName = villager.getCustomName();
         Player p = e.getPlayer();
 

@@ -4,7 +4,9 @@ import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.SetPlayerStuff;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
+import fr.GameOfFamous.bedwars_Solo.Utils.Manager.TimeManager;
 import fr.GameOfFamous.bedwars_Solo.Utils.Player.InGameBoard;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -23,7 +25,9 @@ public class Starting {
 
         manager.allTasks.put("Hellstylia", Bukkit.getServer().getScheduler().runTaskTimer(Bedwars_Solo.instance, InGameBoard.getInstance(), 0, 1));
 
-        manager.setGameState(fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState.IN_GAME);
+        manager.setGameState(GameState.IN_GAME);
+
+        TimeManager.initGameTime();
 
         Finish.detectFinish();
 

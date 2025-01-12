@@ -29,7 +29,7 @@ public class DiamondEmerald {
 
     private final World world;
 
-    private static final long DIAMOND_EMERALD_DROP_DELAY = 300L; // 15 secondes (ticks)
+    private static final long DIAMOND_EMERALD_DROP_DELAY = 600L; // 30 secondes (ticks)
     private static final long DIAMOND_UPGRADE_DELAY = 20L; // 1 seconde (ticks)
 
     private DiamondEmerald() {

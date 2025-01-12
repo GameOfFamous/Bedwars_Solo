@@ -85,6 +85,8 @@ public class GameManager {
 
         World world = Bukkit.getWorld("world");
 
+        if(world == null) return;
+
         Block block = world.getBlockAt(teams.getBedLocation());
 
         if(block.getType() == Material.RED_BED || block.getType() == Material.GREEN_BED || block.getType() == Material.YELLOW_BED || block.getType() == Material.BLUE_BED){
@@ -226,17 +228,29 @@ public class GameManager {
         if(teamAccounts.get(team) == null){
             return false;
         }
-        if(teamAccounts.get(team).isBedAlive()){
-            return true;
-        }
-        return false;
+        return teamAccounts.get(team).isBedAlive();
+    }
+
+    public boolean isPlayerAlive(Teams teams){
+        if(teamAccounts.get(teams) == null) return  false;
+
+        return teamAccounts.get(teams).isPlayerAlive();
     }
 
     public String returnSymboleBed(Teams team){
         if(isBedAlive(team)){
             return "§a✓ ";
+        }else{
+            if(isPlayerAlive(team)) return "§7[§a1§7]";
         }
         return "§c✗ ";
+    }
+
+    public String detectPlayerTeam(Player player, Teams teams){
+        if(returnPlayerTeam(player).equals(teams)){
+            return "§7YOU";
+        }
+        return " ";
     }
 
     public static GameManager getInstance() {

@@ -2,6 +2,7 @@ package fr.GameOfFamous.bedwars_Solo.Utils.Player;
 
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
+import fr.GameOfFamous.bedwars_Solo.Utils.Manager.TimeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -60,7 +61,7 @@ public class InGameBoard implements Runnable{
         String REDKey = ChatColor.RED.toString();
         REDTeam.addEntry(REDKey);
         REDTeam.setPrefix("§c " + manager.returnSymboleBed(Teams.RED));
-        REDTeam.setSuffix("§cRed");
+        REDTeam.setSuffix("§cRed" + manager.detectPlayerTeam(player, Teams.RED));
         objective.getScore(REDKey).setScore(5);
 
         // --- Clan ---
@@ -68,7 +69,7 @@ public class InGameBoard implements Runnable{
         String BlueKey = ChatColor.BLUE.toString();
         BlueTeam.addEntry(BlueKey);
         BlueTeam.setPrefix("§9 " + manager.returnSymboleBed(Teams.BLUE));
-        BlueTeam.setSuffix("§9Blue");
+        BlueTeam.setSuffix("§9Blue" + manager.detectPlayerTeam(player, Teams.BLUE));
         objective.getScore(BlueKey).setScore(4);
 
         // --- Grade ---
@@ -76,15 +77,22 @@ public class InGameBoard implements Runnable{
         String YellowKey = ChatColor.YELLOW.toString();
         YellowTeam.addEntry(YellowKey);
         YellowTeam.setPrefix("§e " + manager.returnSymboleBed(Teams.YELLOW));
-        YellowTeam.setSuffix("§eYellow");
+        YellowTeam.setSuffix("§eYellow" + manager.detectPlayerTeam(player, Teams.YELLOW));
         objective.getScore(YellowKey).setScore(3);
 
         Team GreenTeam = scoreboard.registerNewTeam("GREENTeam");
         String GreedKey = ChatColor.GREEN.toString();
         GreenTeam.addEntry(GreedKey);
         GreenTeam.setPrefix("§a " + manager.returnSymboleBed(Teams.GREEN));
-        GreenTeam.setSuffix("§aGreen");
+        GreenTeam.setSuffix("§aGreen" + manager.detectPlayerTeam(player, Teams.GREEN));
         objective.getScore(GreedKey).setScore(2);
+
+        Team time = scoreboard.registerNewTeam("TimeTeam");
+        String timekey = ChatColor.AQUA.toString();
+        time.addEntry(timekey);
+        time.setPrefix("§1 " + "§fTemps de jeu : ");
+        time.setSuffix("§d" + TimeManager.minutes + " §f: §d" + TimeManager.secondes);
+        objective.getScore(timekey).setScore(2);
 
         // Appliquer le scoreboard au joueur
         player.setScoreboard(scoreboard);
@@ -123,6 +131,11 @@ public class InGameBoard implements Runnable{
         Team team5 = scoreboard.getTeam("GREENTeam");
         if (team5 != null) {
             team5.setPrefix("§a " + manager.returnSymboleBed(Teams.GREEN));
+        }
+
+        Team team6 = scoreboard.getTeam("TimeTeam");
+        if (team6 != null) {
+            team6.setSuffix("§d" + TimeManager.minutes + " §f: §d" + TimeManager.secondes);
         }
 
     }

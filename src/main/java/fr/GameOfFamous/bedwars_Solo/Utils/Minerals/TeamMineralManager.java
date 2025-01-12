@@ -21,12 +21,10 @@ public abstract class TeamMineralManager {
 
     protected final ItemStack iron = new ItemStack(Material.IRON_INGOT);
     protected final ItemStack gold = new ItemStack(Material.GOLD_INGOT);
-    protected final ItemStack diamond = new ItemStack(Material.DIAMOND);
     protected final ItemStack emerald = new ItemStack(Material.EMERALD);
 
     protected int ironAmount;
     protected int goldAmount;
-    protected int diamsAmount;
     protected int emeraldAmount;
 
     protected final TeamAccount team;
@@ -62,9 +60,8 @@ public abstract class TeamMineralManager {
         }.runTaskTimer(Bedwars_Solo.instance, 0, 20L);
 
         // Dépôts des minerais
-        scheduleMineralDrop(iron, () -> ironAmount, 60L);
-        scheduleMineralDrop(gold, () -> goldAmount, 200L);
-        scheduleMineralDrop(diamond, () -> diamsAmount, 1200L);
+        scheduleMineralDrop(iron, () -> ironAmount, 80L);
+        scheduleMineralDrop(gold, () -> goldAmount, 240L);
         scheduleMineralDrop(emerald, () -> emeraldAmount, 1200L);
     }
 

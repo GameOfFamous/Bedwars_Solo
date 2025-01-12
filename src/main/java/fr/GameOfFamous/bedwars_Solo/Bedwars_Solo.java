@@ -46,6 +46,7 @@ public final class Bedwars_Solo extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new onPlayerQuitEvent(), this);
         getServer().getPluginManager().registerEvents(new onMenuOpen(), this);
         getServer().getPluginManager().registerEvents(new onMarketMenu(), this);
+        getServer().getPluginManager().registerEvents(new onTeamUpgrade(), this);
 
         GameManager.getInstance().setupTeams();
         GameManager.getInstance().setupPnj();

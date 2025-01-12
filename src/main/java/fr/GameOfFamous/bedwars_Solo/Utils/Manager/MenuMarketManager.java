@@ -25,9 +25,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countIronInventory(player) >= 4) {
-            lore.add("§cVous ne possédez pas assez de §fFer§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez de §fFer§c !");
         }
 
         return lore;
@@ -41,9 +41,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countGoldInventory(player) >= 4) {
-            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
         }
 
         return lore;
@@ -57,9 +57,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countIronInventory(player) >= 10) {
-            lore.add("§cVous ne possédez pas assez de §fFer§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez de §fFer§c !");
         }
 
         return lore;
@@ -73,9 +73,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countGoldInventory(player) >= 7) {
-            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
         }
 
         return lore;
@@ -90,9 +90,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countIronInventory(player) >= 24) {
-            lore.add("§cVous ne possédez pas assez de §fFer§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez de §fFer§c !");
         }
 
         return lore;
@@ -108,9 +108,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countGoldInventory(player) >= 12) {
-            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
         }
 
         return lore;
@@ -126,9 +126,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countGoldInventory(player) >= 7) {
-            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
         }
 
         return lore;
@@ -142,9 +142,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countIronInventory(player) >= 20) {
-            lore.add("§cVous ne possédez pas assez de §fFer§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez de §fFer§c !");
         }
 
         return lore;
@@ -158,9 +158,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countGoldInventory(player) >= 12) {
-            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
         }
 
         return lore;
@@ -174,9 +174,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countGoldInventory(player) >= 2) {
-            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
         }
 
         return lore;
@@ -192,9 +192,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countEmeraldInventory(player) >= 2) {
-            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
         }
 
         return lore;
@@ -210,9 +210,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countEmeraldInventory(player) >= 3) {
-            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
         }
 
         return lore;
@@ -228,9 +228,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countGoldInventory(player) >= 4) {
-            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
         }
 
         return lore;
@@ -244,9 +244,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countEmeraldInventory(player) >= 4) {
-            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
         }
 
         return lore;
@@ -260,9 +260,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countIronInventory(player) >= 12) {
-            lore.add("§cVous ne possédez pas assez de §fFer§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez de §fFer§c !");
         }
 
         return lore;
@@ -278,9 +278,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countIronInventory(player) >= 12) {
-            lore.add("§cVous ne possédez pas assez de §fFer§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez de §fFer§c !");
         }
 
         return lore;
@@ -294,9 +294,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countIronInventory(player) >= 24) {
-            lore.add("§cVous ne possédez pas assez de §fFer§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez de §fFer§c !");
         }
 
         return lore;
@@ -310,9 +310,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countIronInventory(player) >= 4) {
-            lore.add("§cVous ne possédez pas assez de §fFer§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez de §fFer§c !");
         }
 
         return lore;
@@ -326,9 +326,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countEmeraldInventory(player) >= 4) {
-            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
         }
 
         return lore;
@@ -342,9 +342,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countEmeraldInventory(player) >= 4) {
-            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
         }
 
         return lore;
@@ -360,9 +360,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countGoldInventory(player) >= 5) {
-            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
         }
 
         return lore;
@@ -376,9 +376,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countEmeraldInventory(player) >= 6) {
-            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
         }
 
         return lore;
@@ -392,9 +392,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countIronInventory(player) >= 10) {
-            lore.add("§cVous ne possédez pas assez de §fFer§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez de §fFer§c !");
         }
 
         return lore;
@@ -408,9 +408,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countGoldInventory(player) >= 7) {
-            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
         }
 
         return lore;
@@ -424,9 +424,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countEmeraldInventory(player) >= 4) {
-            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
         }
 
         return lore;
@@ -440,9 +440,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countIronInventory(player) >= 10) {
-            lore.add("§cVous ne possédez pas assez de §fFer§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez de §fFer§c !");
         }
 
         return lore;
@@ -456,9 +456,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countIronInventory(player) >= 24) {
-            lore.add("§cVous ne possédez pas assez de §fFer§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez de §fFer§c !");
         }
 
         return lore;
@@ -472,9 +472,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countGoldInventory(player) >= 7) {
-            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
         }
 
         return lore;
@@ -488,9 +488,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countEmeraldInventory(player) >= 4) {
-            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
         }
 
         return lore;
@@ -504,9 +504,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countGoldInventory(player) >= 20) {
-            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§6Or§c !");
         }
 
         return lore;
@@ -520,9 +520,9 @@ public class MenuMarketManager {
         lore.add(" ");
 
         if(countEmeraldInventory(player) >= 6) {
-            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
-        }else {
             lore.add("§aAcheter");
+        }else {
+            lore.add("§cVous ne possédez pas assez d'§2Emeraudes§c !");
         }
 
         return lore;

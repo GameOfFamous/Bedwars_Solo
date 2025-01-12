@@ -204,9 +204,9 @@ public class MenuUpgradeManager {
 
         String[] bonuses = {
                 "+50% Iron",
-                "+100% Iron",
+                "+100% Iron | +100% Gold",
                 "+1 Emeraude",
-                "+200% Iron"
+                "+200% Iron | +200% Gold"
         };
         String[] cost = {
                 "§b2 Diamants",
