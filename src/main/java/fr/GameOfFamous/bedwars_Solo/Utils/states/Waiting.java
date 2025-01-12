@@ -12,7 +12,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class Waiting {
 
-    public static int countdown = 60;
+    public static int countdown = 20;
 
     public static void setWaiting() {
 
@@ -36,7 +36,7 @@ public class Waiting {
 
                 if (!manager.players.isEmpty()) {
                     for (Player player : manager.players) {
-                        // Normalisez countdown pour qu'il soit compris entre 0.0 et 1.0
+                        // Normalisez countdown pour qu'il soit compris entre 0.0 et 1.0(
                         float progress = (float) countdown / 60;
 
                         // Clamp entre 0.0 et 1.0 pour éviter les erreurs
@@ -57,8 +57,11 @@ public class Waiting {
                 }
 
                 if (countdown <= 0) {
-                    countdown = 60;
-                    manager.allTasks.get("wainting").cancel();
+                    countdown = 20;
+                    if(!manager.allTasks.isEmpty()){
+                        System.out.println(manager.allTasks.values());
+                        manager.allTasks.get("waiting").cancel();
+                    }
                     manager.removeScordboard("Waiting");
                     Starting.setStarting();
                     cancel();

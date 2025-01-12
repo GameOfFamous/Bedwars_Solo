@@ -24,7 +24,8 @@ public class InGameBoard implements Runnable{
     public void run(){
 
         for(Player player : Bukkit.getOnlinePlayers()){
-            if(player.getScoreboard() != null && player.getScoreboard().getObjective("Hellstylia") != null){
+            player.getScoreboard();
+            if(player.getScoreboard().getObjective("Hellstylia") != null){
                 updateScoreboard(player);
             }else{
                 createNewScoreboard(player);

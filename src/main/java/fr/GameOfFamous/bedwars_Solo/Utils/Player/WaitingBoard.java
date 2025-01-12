@@ -27,7 +27,8 @@ public class WaitingBoard implements Runnable{
     public void run(){
 
         for(Player player : Bukkit.getOnlinePlayers()){
-            if(player.getScoreboard() != null && player.getScoreboard().getObjective("Waiting") != null){
+            player.getScoreboard();
+            if(player.getScoreboard().getObjective("Waiting") != null){
                 updateScoreboard(player);
             }else{
                 createNewScoreboard(player);
@@ -52,7 +53,7 @@ public class WaitingBoard implements Runnable{
         objective.getScore("§6§lhellstylia.com").setScore(0); // Site web ou footer
 
         // --- Rang ---
-        Team rankTeam = scoreboard.registerNewTeam("rankTeam");
+        Team rankTeam = scoreboard.registerNewTeam("update");
         String rankKey = ChatColor.AQUA.toString();
         rankTeam.addEntry(rankKey);
         rankTeam.setPrefix("§b " + "§bDébut dans §f: ");
@@ -60,7 +61,7 @@ public class WaitingBoard implements Runnable{
         objective.getScore(rankKey).setScore(7);
 
         // --- Argent ---
-        Team REDTeam = scoreboard.registerNewTeam("REDTeam");
+        Team REDTeam = scoreboard.registerNewTeam("gamejouer");
         String REDKey = ChatColor.RED.toString();
         REDTeam.addEntry(REDKey);
         REDTeam.setPrefix("§c " + "§aGame jouer §f: ");
@@ -68,7 +69,7 @@ public class WaitingBoard implements Runnable{
         objective.getScore(REDKey).setScore(5);
 
         // --- Clan ---
-        Team BlueTeam = scoreboard.registerNewTeam("BLUETeam");
+        Team BlueTeam = scoreboard.registerNewTeam("gamewin");
         String BlueKey = ChatColor.BLUE.toString();
         BlueTeam.addEntry(BlueKey);
         BlueTeam.setPrefix("§9 " + "§aGame Gagner §f: ");
@@ -76,14 +77,14 @@ public class WaitingBoard implements Runnable{
         objective.getScore(BlueKey).setScore(4);
 
         // --- Grade ---
-        Team YellowTeam = scoreboard.registerNewTeam("YELLOWTeam");
+        Team YellowTeam = scoreboard.registerNewTeam("kills");
         String YellowKey = ChatColor.YELLOW.toString();
         YellowTeam.addEntry(YellowKey);
         YellowTeam.setPrefix("§e " + "§aKills §f: ");
         YellowTeam.setSuffix("§d"+ BedwarsAccountManager.getKills(uuid));
         objective.getScore(YellowKey).setScore(3);
 
-        Team GreenTeam = scoreboard.registerNewTeam("GREENTeam");
+        Team GreenTeam = scoreboard.registerNewTeam("deaths");
         String GreedKey = ChatColor.GREEN.toString();
         GreenTeam.addEntry(GreedKey);
         GreenTeam.setPrefix("§a " + "§aDeath §f: ");
@@ -100,7 +101,7 @@ public class WaitingBoard implements Runnable{
         Scoreboard scoreboard = player.getScoreboard();
 
         // Mise à jour du rang
-        Team team1 = scoreboard.getTeam("rankTeam");
+        Team team1 = scoreboard.getTeam("update");
         if (team1 != null) {
             team1.setSuffix("§d" +Waiting.countdown);
         }
