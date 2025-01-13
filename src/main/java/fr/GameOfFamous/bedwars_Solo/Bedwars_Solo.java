@@ -31,6 +31,8 @@ public final class Bedwars_Solo extends JavaPlugin {
             return; // Arrête l'exécution de la méthode `onEnable`
         }
 
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+
         Standing.gameLauncher();
 
         Border.setBorder();
