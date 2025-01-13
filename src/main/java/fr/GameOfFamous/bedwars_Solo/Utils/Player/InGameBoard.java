@@ -53,8 +53,8 @@ public class InGameBoard implements Runnable{
         Team rankTeam = scoreboard.registerNewTeam("rankTeam");
         String rankKey = ChatColor.AQUA.toString();
         rankTeam.addEntry(rankKey);
-        rankTeam.setPrefix("§b " + manager.returnDiamond());
-        rankTeam.setSuffix("§b " + TimeManager.DIAMOND_minutes + " §f: "+ TimeManager.DIAMOND_secondes);
+        rankTeam.setPrefix("§b " + "§fDiamant ");
+        rankTeam.setSuffix("§b" + manager.returnDiamond());
         objective.getScore(rankKey).setScore(9);
 
         // --- Argent ---
@@ -107,8 +107,7 @@ public class InGameBoard implements Runnable{
         // Mise à jour du rang
         Team team1 = scoreboard.getTeam("rankTeam");
         if (team1 != null) {
-            team1.setPrefix("§b " + manager.returnDiamond());
-            team1.setSuffix("§b " + TimeManager.DIAMOND_minutes + " §f: "+ TimeManager.DIAMOND_secondes);
+            team1.setSuffix("§b" + manager.returnDiamond());
         }
 
         // Mise à jour de l'argent

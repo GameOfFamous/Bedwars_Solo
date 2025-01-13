@@ -286,13 +286,14 @@ public class GameManager {
     }
 
     public String returnDiamond(){
+        String timer = TimeManager.DIAMOND_minutes + " §f: "+ TimeManager.DIAMOND_secondes;
         if(DiamondEmerald.getInstance().diamondLevel == 0){
-            return "§fDiamant +100% §7: ";
+            return "+100% §7: " + timer;
         } else if (DiamondEmerald.getInstance().diamondLevel == 1) {
-            return "§fDiamant +200% §7: ";
+            return "+200% §7: " + timer;
         }
 
-        return "§fDiamant MAX";
+        return "MAX";
     }
 
 }

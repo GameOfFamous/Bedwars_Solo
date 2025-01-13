@@ -337,12 +337,21 @@ public class MenuUpgradeManager {
     public static List<String> getSlownessLore(Teams team){
         List<String> lore = new ArrayList<>();
         TeamAccount teams = teamAccounts.get(team);
+        Player player = teams.getPlayer();
         lore.add("§bAjoute un piège donnant Slowness pendant 10s à vos ennemies");
 
         if(teams.isTrapSlowness()){
-            lore.add("§bPossédé §f: §a✓");
+            lore.add(" ");
+            lore.add("§7Possédé §f: §a✓");
         }else {
-            lore.add("§bPossédé §f: §c✗");
+            lore.add(" ");
+            lore.add("§7Coût : §b2 Diamants");
+            lore.add(" ");
+            if(countDiamondInventory(player) >= 2){
+                lore.add("§7Possédé §f: §c✗");
+            }else {
+                lore.add("§cVous ne possédez pas assez de Diamants !");
+            }
         }
 
         return lore;
@@ -365,12 +374,21 @@ public class MenuUpgradeManager {
     public static List<String> getBlindnessLore(Teams team){
         List<String> lore = new ArrayList<>();
         TeamAccount teams = teamAccounts.get(team);
+        Player player = teams.getPlayer();
         lore.add("§bAjoute un piège donnant Blindness pendant 10s à vos ennemies");
 
-        if(teams.isTrapBlindness()){
-            lore.add("§bPossédé §f: §a✓");
+        if(teams.isTrapSlowness()){
+            lore.add(" ");
+            lore.add("§7Possédé §f: §a✓");
         }else {
-            lore.add("§bPossédé §f: §c✗");
+            lore.add(" ");
+            lore.add("§7Coût : §b2 Diamants");
+            lore.add(" ");
+            if(countDiamondInventory(player) >= 2){
+                lore.add("§7Possédé §f: §c✗");
+            }else {
+                lore.add("§cVous ne possédez pas assez de Diamants !");
+            }
         }
 
         return lore;
@@ -393,12 +411,21 @@ public class MenuUpgradeManager {
     public static List<String> getMiningLore(Teams team){
         List<String> lore = new ArrayList<>();
         TeamAccount teams = teamAccounts.get(team);
+        Player player = teams.getPlayer();
         lore.add("§bAjoute un piège donnant Mining Fatigue pendant 10s à vos ennemies");
 
-        if(teams.isTrapMiningFatigue()){
-            lore.add("§bPossédé §f: §a✓");
+        if(teams.isTrapSlowness()){
+            lore.add(" ");
+            lore.add("§7Possédé §f: §a✓");
         }else {
-            lore.add("§bPossédé §f: §c✗");
+            lore.add(" ");
+            lore.add("§7Coût : §b2 Diamants");
+            lore.add(" ");
+            if(countDiamondInventory(player) >= 2){
+                lore.add("§7Possédé §f: §c✗");
+            }else {
+                lore.add("§cVous ne possédez pas assez de Diamants !");
+            }
         }
 
         return lore;
@@ -421,12 +448,21 @@ public class MenuUpgradeManager {
     public static List<String> getAlarmLore(Teams team){
         List<String> lore = new ArrayList<>();
         TeamAccount teams = teamAccounts.get(team);
-        lore.add("§bAjoute un piège vous avertissant si un ennemie est présent à vôtre base");
+        Player player = teams.getPlayer();
+        lore.add("§bAjoute un piège vous prévenant d'un ennemi dans vôtre base (détect les invisibles !)");
 
-        if(teams.isAlarmTrap()){
-            lore.add("§bPossédé §f: §a✓");
+        if(teams.isTrapSlowness()){
+            lore.add(" ");
+            lore.add("§7Possédé §f: §a✓");
         }else {
-            lore.add("§bPossédé §f: §c✗");
+            lore.add(" ");
+            lore.add("§7Coût : §b2 Diamants");
+            lore.add(" ");
+            if(countDiamondInventory(player) >= 2){
+                lore.add("§7Possédé §f: §c✗");
+            }else {
+                lore.add("§cVous ne possédez pas assez de Diamants !");
+            }
         }
 
         return lore;

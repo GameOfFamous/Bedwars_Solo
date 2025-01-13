@@ -41,8 +41,6 @@ public class onTeamUpgrade implements Listener {
         Teams currentZone = getZoneAtLocation(to, manager);
         Teams lastZone = playerZone.get(player.getUniqueId());
 
-        Player basePlayer = manager.teamAccounts.get(currentZone).getPlayer();
-
         if(currentZone != null && currentZone != lastZone){
             playerZone.put(player.getUniqueId(), currentZone);
             if(teams == currentZone){
@@ -55,6 +53,7 @@ public class onTeamUpgrade implements Listener {
                 }
             }else{
                 TeamAccount ennemiAccount = manager.teamAccounts.get(currentZone);
+                Player basePlayer = ennemiAccount.getPlayer();
 
                 if(ennemiAccount.isAlarmTrap()){
                     player.removePotionEffect(PotionEffectType.INVISIBILITY);
