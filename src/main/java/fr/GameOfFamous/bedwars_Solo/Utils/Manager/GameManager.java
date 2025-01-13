@@ -248,7 +248,7 @@ public class GameManager {
 
     public String detectPlayerTeam(Player player, Teams teams){
         if(returnPlayerTeam(player).equals(teams)){
-            return "§7YOU";
+            return " §7YOU";
         }
         return " ";
     }
@@ -283,6 +283,16 @@ public class GameManager {
                 scheduler.cancelTask(task.getTaskId());
             }
         }
+    }
+
+    public String returnDiamond(){
+        if(DiamondEmerald.getInstance().diamondLevel == 0){
+            return "§fDiamant +100% §7: ";
+        } else if (DiamondEmerald.getInstance().diamondLevel == 1) {
+            return "§fDiamant +200% §7: ";
+        }
+
+        return "§fDiamant MAX";
     }
 
 }

@@ -81,6 +81,9 @@ public class onMarketMenu implements Listener {
                     break;
                 case "§cEpée en Pierre":
                     if(!(marketAccount.getSword() == 1)){
+                        if(marketAccount.getSword() == 2 || marketAccount.getSword() == 3){
+                            break;
+                        }
                         if(countInventory(p, Material.IRON_INGOT) >= 10){
                             marketAccount.setSword(1);
                             removeItems(p, 10, Material.IRON_INGOT);
@@ -90,6 +93,9 @@ public class onMarketMenu implements Listener {
                     break;
                 case "§cEpée en fer":
                     if (!(marketAccount.getSword() == 2)){
+                        if(marketAccount.getSword() == 3){
+                            break;
+                        }
                         if(countInventory(p, Material.GOLD_INGOT) >= 7){
                             marketAccount.setSword(2);
                             removeItems(p, 7, Material.GOLD_INGOT);
@@ -111,6 +117,9 @@ public class onMarketMenu implements Listener {
                     break;
                 case "§cArmure en cotte de mailles":
                     if(!(marketAccount.getArmor() == 1)){
+                        if(marketAccount.getArmor() == 2 || marketAccount.getArmor() == 3){
+                            break;
+                        }
                         if(countInventory(p, Material.IRON_INGOT) >= 24){
                             marketAccount.setArmor(1);
                             removeItems(p, 24, Material.IRON_INGOT);
@@ -120,6 +129,9 @@ public class onMarketMenu implements Listener {
                     break;
                 case "§cArmure en fer":
                     if(!(marketAccount.getArmor() == 2)){
+                        if(marketAccount.getArmor() == 3){
+                            break;
+                        }
                         if(countInventory(p, Material.GOLD_INGOT) >= 12){
                             marketAccount.setArmor(2);
                             removeItems(p, 12, Material.GOLD_INGOT);

@@ -24,12 +24,13 @@ public class DiamondEmerald {
     private int diamondAmount = 1;
     private final int emeraldAmount = 1;
 
-    private int diamondUpgradeTimer = 300; // Temps en secondes avant le prochain niveau de diamant
-    private int diamondLevel = 0;
+    private int diamondUpgradeTimer = 600; // Temps en secondes avant le prochain niveau de diamant
+    public int diamondLevel = 0;
 
     private final World world;
 
-    private static final long DIAMOND_EMERALD_DROP_DELAY = 600L; // 30 secondes (ticks)
+    private static final long DIAMOND_DROP_DELAY = 1200L; // 30 secondes (ticks)
+    private static final long EMERALD_DROP_DELAY = 1200L; // 60 secondes (ticks)
     private static final long DIAMOND_UPGRADE_DELAY = 20L; // 1 seconde (ticks)
 
     private DiamondEmerald() {
@@ -49,17 +50,22 @@ public class DiamondEmerald {
                     return;
                 }
 
+                if(diamondLevel == 2){
+                    cancel();
+                    diamondUpgradeTimer = 600;
+                }
+
                 // Mise à jour du niveau et de la quantité de diamants
                 if (diamondUpgradeTimer <= 0) {
                     diamondLevel++;
                     diamondAmount = Math.min(3, diamondLevel + 1); // Limite à 3 diamants
-                    diamondUpgradeTimer = 300; // Réinitialise le temps pour la prochaine augmentation
+                    diamondUpgradeTimer = 600; // Réinitialise le temps pour la prochaine augmentation
                 }
                 diamondUpgradeTimer--;
             }
         }.runTaskTimer(Bedwars_Solo.instance, 0, DIAMOND_UPGRADE_DELAY);
 
-        // Dépôt des diamants et des émeraudes
+        // Dépôt des diamants
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -73,10 +79,23 @@ public class DiamondEmerald {
                 dropItem(diamond, diamondAmount, MineraisLoc.DIAMOND2.getLocation());
                 dropItem(diamond, diamondAmount, MineraisLoc.DIAMOND3.getLocation());
                 dropItem(diamond, diamondAmount, MineraisLoc.DIAMOND4.getLocation());
+            }
+        }.runTaskTimer(Bedwars_Solo.instance, 0, DIAMOND_DROP_DELAY);
+
+        // Dépôt des Emeraudes
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (manager.gameState.equals(GameState.FINISHED)) {
+                    cancel();
+                    return;
+                }
+
+                // Déposer les objets
                 dropItem(emerald, emeraldAmount, MineraisLoc.EMERALD1.getLocation());
                 dropItem(emerald, emeraldAmount, MineraisLoc.EMERALD2.getLocation());
             }
-        }.runTaskTimer(Bedwars_Solo.instance, 0, DIAMOND_EMERALD_DROP_DELAY);
+        }.runTaskTimer(Bedwars_Solo.instance, 0, EMERALD_DROP_DELAY);
     }
 
     private void dropItem(ItemStack itemStack, int amount, Location location) {

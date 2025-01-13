@@ -45,6 +45,7 @@ public class InGameBoard implements Runnable{
 
         objective.getScore("§8 ").setScore(8); // Ligne vide pour espacer
         objective.getScore("§2 ").setScore(6); // Ligne vide pour espacer
+        objective.getScore("§3 ").setScore(3); // Ligne vide pour espacer
         objective.getScore("§1 ").setScore(1); // Ligne vide pour espacer
         objective.getScore("§6§lhellstylia.com").setScore(0); // Site web ou footer
 
@@ -52,9 +53,9 @@ public class InGameBoard implements Runnable{
         Team rankTeam = scoreboard.registerNewTeam("rankTeam");
         String rankKey = ChatColor.AQUA.toString();
         rankTeam.addEntry(rankKey);
-        rankTeam.setPrefix("§b " + "Vous ete : ");
-        rankTeam.setSuffix(manager.returnPlayerTeam(player).getPrefix());
-        objective.getScore(rankKey).setScore(7);
+        rankTeam.setPrefix("§b " + manager.returnDiamond());
+        rankTeam.setSuffix("§b " + TimeManager.DIAMOND_minutes + " §f: "+ TimeManager.DIAMOND_secondes);
+        objective.getScore(rankKey).setScore(9);
 
         // --- Argent ---
         Team REDTeam = scoreboard.registerNewTeam("REDTeam");
@@ -62,7 +63,7 @@ public class InGameBoard implements Runnable{
         REDTeam.addEntry(REDKey);
         REDTeam.setPrefix("§c " + manager.returnSymboleBed(Teams.RED));
         REDTeam.setSuffix("§cRed" + manager.detectPlayerTeam(player, Teams.RED));
-        objective.getScore(REDKey).setScore(5);
+        objective.getScore(REDKey).setScore(7);
 
         // --- Clan ---
         Team BlueTeam = scoreboard.registerNewTeam("BLUETeam");
@@ -70,7 +71,7 @@ public class InGameBoard implements Runnable{
         BlueTeam.addEntry(BlueKey);
         BlueTeam.setPrefix("§9 " + manager.returnSymboleBed(Teams.BLUE));
         BlueTeam.setSuffix("§9Blue" + manager.detectPlayerTeam(player, Teams.BLUE));
-        objective.getScore(BlueKey).setScore(4);
+        objective.getScore(BlueKey).setScore(6);
 
         // --- Grade ---
         Team YellowTeam = scoreboard.registerNewTeam("YELLOWTeam");
@@ -78,14 +79,14 @@ public class InGameBoard implements Runnable{
         YellowTeam.addEntry(YellowKey);
         YellowTeam.setPrefix("§e " + manager.returnSymboleBed(Teams.YELLOW));
         YellowTeam.setSuffix("§eYellow" + manager.detectPlayerTeam(player, Teams.YELLOW));
-        objective.getScore(YellowKey).setScore(3);
+        objective.getScore(YellowKey).setScore(5);
 
         Team GreenTeam = scoreboard.registerNewTeam("GREENTeam");
         String GreedKey = ChatColor.GREEN.toString();
         GreenTeam.addEntry(GreedKey);
         GreenTeam.setPrefix("§a " + manager.returnSymboleBed(Teams.GREEN));
         GreenTeam.setSuffix("§aGreen" + manager.detectPlayerTeam(player, Teams.GREEN));
-        objective.getScore(GreedKey).setScore(2);
+        objective.getScore(GreedKey).setScore(4);
 
         Team time = scoreboard.registerNewTeam("TimeTeam");
         String timekey = ChatColor.AQUA.toString();
@@ -106,7 +107,8 @@ public class InGameBoard implements Runnable{
         // Mise à jour du rang
         Team team1 = scoreboard.getTeam("rankTeam");
         if (team1 != null) {
-            team1.setSuffix(manager.returnPlayerTeam(player).getPrefix());
+            team1.setPrefix("§b " + manager.returnDiamond());
+            team1.setSuffix("§b " + TimeManager.DIAMOND_minutes + " §f: "+ TimeManager.DIAMOND_secondes);
         }
 
         // Mise à jour de l'argent

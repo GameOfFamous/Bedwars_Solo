@@ -5,6 +5,7 @@ import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.SetPlayerStuff;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
 import fr.GameOfFamous.bedwars_Solo.Utils.Menus.UpgradeMenu;
 import fr.GameOfFamous.commons.TeamAccount;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -19,6 +20,10 @@ public class onUpgradeMenu implements Listener {
 
     @EventHandler
     public void onInventory(InventoryClickEvent e){
+
+        if(GameManager.getInstance().gameState != GameState.IN_GAME){
+            return;
+        }
 
         Player p = (Player) e.getWhoClicked();
         ItemStack current = e.getCurrentItem();

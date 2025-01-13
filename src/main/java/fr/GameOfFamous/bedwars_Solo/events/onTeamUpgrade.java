@@ -37,10 +37,11 @@ public class onTeamUpgrade implements Listener {
 
         Teams teams = manager.returnPlayerTeam(player);
         TeamAccount account = manager.teamAccounts.get(teams);
-        Player basePlayer = account.getPlayer();
 
         Teams currentZone = getZoneAtLocation(to, manager);
         Teams lastZone = playerZone.get(player.getUniqueId());
+
+        Player basePlayer = manager.teamAccounts.get(currentZone).getPlayer();
 
         if(currentZone != null && currentZone != lastZone){
             playerZone.put(player.getUniqueId(), currentZone);

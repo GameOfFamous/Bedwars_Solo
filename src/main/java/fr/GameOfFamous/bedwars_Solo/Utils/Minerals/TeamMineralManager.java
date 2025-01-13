@@ -60,8 +60,8 @@ public abstract class TeamMineralManager {
         }.runTaskTimer(Bedwars_Solo.instance, 0, 20L);
 
         // Dépôts des minerais
-        scheduleMineralDrop(iron, () -> ironAmount, 80L);
-        scheduleMineralDrop(gold, () -> goldAmount, 240L);
+        scheduleMineralDrop(iron, () -> ironAmount, 160L);
+        scheduleMineralDrop(gold, () -> goldAmount, 480L);
         scheduleMineralDrop(emerald, () -> emeraldAmount, 1200L);
     }
 

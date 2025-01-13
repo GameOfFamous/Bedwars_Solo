@@ -65,7 +65,7 @@ public class SetPlayerStuff {
             sword = CreateItem.newItemBedwars(Material.DIAMOND_SWORD, 1, sharpness);
         }
 
-        player.getInventory().setItem(0, sword);
+        player.getInventory().addItem(sword);
     }
 
 }

@@ -34,6 +34,11 @@ public class Waiting {
                     return;
                 }
 
+                if(manager.players.size() == 1){
+                    manager.setGameState(GameState.STANDING);
+                    cancel();
+                }
+
                 if (!manager.players.isEmpty()) {
                     for (Player player : manager.players) {
                         // Normalisez countdown pour qu'il soit compris entre 0.0 et 1.0(
