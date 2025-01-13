@@ -50,7 +50,7 @@ public class GameManager {
     public ConcurrentHashMap<String, BukkitTask> allTasks = new ConcurrentHashMap<>();
 
 
-    public final TeamAccount DEFAULT_ACCOUNT = new TeamAccount(null,false, true, false, 0, 0, 0, false, false, false, false,false, false);
+    public final TeamAccount DEFAULT_ACCOUNT = new TeamAccount(null,true, true, false, 0, 0, 0, false, false, false, false,false, false);
     public final MarketAccount DEFAULT_MARKET = new MarketAccount(0,0,0);
 
     public GameManager(){}

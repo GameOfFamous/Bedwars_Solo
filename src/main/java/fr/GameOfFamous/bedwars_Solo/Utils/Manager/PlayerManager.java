@@ -4,6 +4,7 @@ import fr.GameOfFamous.bedwars_Solo.Bedwars_Solo;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.MineraisLoc;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Gestion.SetPlayerStuff;
+import fr.GameOfFamous.commons.TeamAccount;
 import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
 import fr.GameOfFamous.hellstylia_API.Manager.BedwarsAccountManager;
 import fr.GameOfFamous.hellstylia_API.Utils.SendMessage;
@@ -79,6 +80,10 @@ public class PlayerManager {
     }
 
     private static void resetPlayer(Player player, Teams teams, GameManager manager){
+
+        TeamAccount account = manager.teamAccounts.get(teams);
+
+        account.setPlayerAlive(false);
 
         player.getInventory().clear();
         player.setGameMode(GameMode.SPECTATOR);

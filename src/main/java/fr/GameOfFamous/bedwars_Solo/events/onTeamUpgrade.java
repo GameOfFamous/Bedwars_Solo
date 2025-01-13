@@ -3,6 +3,7 @@ package fr.GameOfFamous.bedwars_Solo.events;
 import fr.GameOfFamous.bedwars_Solo.Utils.Enums.Teams;
 import fr.GameOfFamous.bedwars_Solo.Utils.Manager.GameManager;
 import fr.GameOfFamous.commons.TeamAccount;
+import fr.GameOfFamous.hellstylia_API.EnumsUtils.GameState;
 import fr.GameOfFamous.hellstylia_API.Utils.SendMessage;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -25,8 +26,18 @@ public class onTeamUpgrade implements Listener {
         Player player = e.getPlayer();
         Location to = e.getTo();
         GameManager manager = GameManager.getInstance();
+
+        if(manager.gameState != GameState.IN_GAME){
+            return;
+        }
+
+        if(manager.spectator.contains(player)){
+            return;
+        }
+
         Teams teams = manager.returnPlayerTeam(player);
         TeamAccount account = manager.teamAccounts.get(teams);
+        Player basePlayer = account.getPlayer();
 
         Teams currentZone = getZoneAtLocation(to, manager);
         Teams lastZone = playerZone.get(player.getUniqueId());
@@ -47,19 +58,23 @@ public class onTeamUpgrade implements Listener {
                 if(ennemiAccount.isAlarmTrap()){
                     player.removePotionEffect(PotionEffectType.INVISIBILITY);
                     ennemiAccount.setAlarmTrap(false);
-                    SendMessage.sendTitle(player, "§7Trap Activée", "§eUn joueur est entré dans vôtre base");
+                    SendMessage.sendTitle(basePlayer, "§7Trap Activée", "§eUn joueur est entré dans vôtre base");
+                    SendMessage.sendTitle(player, "§7Trap Activée", "§eVous avez déclenchez un piège !");
                 }else if(ennemiAccount.isTrapBlindness()){
                     player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 200, 0, true, true));
                     ennemiAccount.setTrapBlindness(false);
-                    SendMessage.sendTitle(player, "§7Trap Blindness", "§eVôtre trap blindness à été activé !");
+                    SendMessage.sendTitle(basePlayer, "§7Trap Blindness", "§eVôtre trap blindness à été activé !");
+                    SendMessage.sendTitle(player, "§7Trap Blindness", "§eVous avez déclenchez un piège !");
                 } else if (ennemiAccount.isTrapSlowness()) {
                     player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 200, 0, true, true));
                     ennemiAccount.setTrapSlowness(false);
-                    SendMessage.sendTitle(player, "§7Trap Slowness", "§eVôtre trap slowness à été activé !");
+                    SendMessage.sendTitle(basePlayer, "§7Trap Slowness", "§eVôtre trap slowness à été activé !");
+                    SendMessage.sendTitle(player, "§7Trap Slowness", "§eVous avez déclenchez un piège !");
                 } else if (ennemiAccount.isTrapMiningFatigue()) {
                     player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 200, 0, true, true));
                     ennemiAccount.setTrapMiningFatigue(false);
-                    SendMessage.sendTitle(player, "§7Trap Mining Fatigue", "§eVôtre trap mining fatigue à été activé !");
+                    SendMessage.sendTitle(basePlayer, "§7Trap Mining Fatigue", "§eVôtre trap mining fatigue à été activé !");
+                    SendMessage.sendTitle(player, "§7Trap Mining Fatigue", "§eVous avez déclenchez un piège !");
                 }
             }
 
